@@ -2,23 +2,34 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\ContactController; // <<< Add this
 use Illuminate\Support\Facades\Route;
 
-// Public routes
+// --- Public Routes ---
 Route::get('/', [ProjectController::class, 'index'])->name('home');
 Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
+Route::post('/newsletter-subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+Route::post('/contact-submit', [ContactController::class, 'store'])->name('contact.store'); // <<< Add this route
 
-// Dashboard route
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'verified'])->name('admin.dashboard');
+// --- Admin Routes ---
+Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', function () {
+         // Recommended: Use layouts.admin here for consistency
+        return view('admin.dashboard');
+    })->name('dashboard');
 
-// Admin routes for projects
-Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::resource('projects', ProjectController::class)->except(['show']);
+
+    // Add Contact Message Routes for Admin
+    Route::get('messages', [ContactController::class, 'index'])->name('messages.index');
+    Route::get('messages/{message}', [ContactController::class, 'show'])->name('messages.show');
+    Route::delete('messages/{message}', [ContactController::class, 'destroy'])->name('messages.destroy');
+    // We don't need create/edit/update routes for viewing received messages
 });
 
-// Laravel Breeze routes
+
+// --- Auth Routes ---
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

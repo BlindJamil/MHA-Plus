@@ -38,9 +38,10 @@
                     <!-- Navigation -->
                     <div class="hidden sm:ml-6 sm:flex sm:items-center">
                         <div class="flex space-x-4">
-                            <a href="{{ route('admin.dashboard') }}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">Dashboard</a>
-                            <a href="{{ route('admin.projects.index') }}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">Projects</a>
-                            <a href="{{ route('home') }}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">View Site</a>
+                            <a href="{{ route('admin.dashboard') }}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 {{ request()->routeIs('admin.dashboard') ? 'bg-gray-900 text-white' : '' }}">Dashboard</a>
+                            <a href="{{ route('admin.projects.index') }}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 {{ request()->routeIs('admin.projects.*') ? 'bg-gray-900 text-white' : '' }}">Projects</a>
+                            <a href="{{ route('admin.messages.index') }}" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 {{ request()->routeIs('admin.messages.*') ? 'bg-gray-900 text-white' : '' }}">Messages</a> {{-- <<< Added Link --}}
+                            <a href="{{ route('home') }}" target="_blank" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">View Site</a>
                         </div>
                     </div>
                 </div>
@@ -72,10 +73,12 @@
         <!-- Mobile menu -->
         <div id="mobile-menu" class="sm:hidden hidden">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="{{ route('admin.dashboard') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Dashboard</a>
-                <a href="{{ route('admin.projects.index') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Projects</a>
-                <a href="{{ route('home') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">View Site</a>
+                <a href="{{ route('admin.dashboard') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 {{ request()->routeIs('admin.dashboard') ? 'bg-gray-900 text-white' : '' }}">Dashboard</a>
+                <a href="{{ route('admin.projects.index') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 {{ request()->routeIs('admin.projects.*') ? 'bg-gray-900 text-white' : '' }}">Projects</a>
+                <a href="{{ route('admin.messages.index') }}" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 {{ request()->routeIs('admin.messages.*') ? 'bg-gray-900 text-white' : '' }}">Messages</a> {{-- <<< Added Link --}}
+                <a href="{{ route('home') }}" target="_blank" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">View Site</a>
             </div>
+            {{-- ... rest of mobile menu ... --}}
             <div class="pt-4 pb-3 border-t border-gray-700">
                 <div class="flex items-center px-5">
                     <div class="ml-3">

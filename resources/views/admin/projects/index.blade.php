@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-gray-900 text-gray-300">
+    {{-- Consider using @extends('layouts.admin') here for consistency --}}
     <header class="bg-gray-800 p-4 border-b border-gray-700">
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-xl font-bold text-white">MHA Plus Admin</h1>
@@ -73,13 +74,17 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ ucfirst($project->category) }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    @if($project->is_online)
-                                        <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">Online</span>
-                                    @elseif($project->is_offline)
-                                        <span class="px-2 py-1 bg-amber-500/20 text-amber-400 rounded-full text-xs">Offline</span>
-                                    @else
-                                        <span class="px-2 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs">Template</span>
+                                    {{-- Only show status for web projects --}}
+                                    @if($project->category === 'web')
+                                        @if($project->is_online)
+                                            <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">Online</span>
+                                        @elseif($project->is_offline)
+                                            <span class="px-2 py-1 bg-amber-500/20 text-amber-400 rounded-full text-xs">Offline</span>
+                                        @else {{-- Template --}}
+                                            <span class="px-2 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs">Template</span>
+                                        @endif
                                     @endif
+                                    {{-- End status display --}}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
                                     <a href="{{ route('projects.show', $project->id) }}" target="_blank" class="text-blue-400 hover:text-blue-300 mx-1" title="View"><i class="fas fa-eye"></i></a>
