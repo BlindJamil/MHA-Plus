@@ -14,7 +14,6 @@
                     </a>
                 </div>
 
-                {{-- Display any session errors --}}
                 @if ($errors->any())
                     <div class="mb-4 bg-red-500/20 text-red-400 p-4 rounded-md">
                         <ul class="list-disc pl-5">
@@ -28,22 +27,21 @@
                 <form method="POST" action="{{ route('admin.projects.update', $project->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    
+
                     <div class="mb-4">
                         <label for="title" class="block text-sm font-medium text-gray-300 mb-1">Title</label>
-                        <input id="title" class="block mt-1 w-full bg-gray-700 border-gray-600 rounded-md shadow-sm text-white focus:ring-teal-500 focus:border-teal-500" type="text" name="title" value="{{ old('title', $project->title) }}" required autofocus />
-                        {{-- Removed x-input-error, manual display above or use @error directive --}}
+                        <input id="title" class="block mt-1 w-full bg-gray-700 border-gray-600 rounded-md shadow-sm text-white focus:ring-teal-500 focus:border-teal-500 @error('title') border-red-500 @enderror" type="text" name="title" value="{{ old('title', $project->title) }}" required autofocus />
                     </div>
-                    
+
                     <div class="mb-4">
                         <label for="description" class="block text-sm font-medium text-gray-300 mb-1">Description</label>
-                        <textarea id="description" name="description" rows="4" class="block mt-1 w-full bg-gray-700 border-gray-600 rounded-md shadow-sm text-white focus:ring-teal-500 focus:border-teal-500" required>{{ old('description', $project->description) }}</textarea>
+                        <textarea id="description" name="description" rows="4" class="block mt-1 w-full bg-gray-700 border-gray-600 rounded-md shadow-sm text-white focus:ring-teal-500 focus:border-teal-500 @error('description') border-red-500 @enderror" required>{{ old('description', $project->description) }}</textarea>
                     </div>
-                    
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label for="category" class="block text-sm font-medium text-gray-300 mb-1">Category</label>
-                            <select id="category" name="category" class="block mt-1 w-full bg-gray-700 border-gray-600 rounded-md shadow-sm text-white focus:ring-teal-500 focus:border-teal-500" required>
+                            <select id="category" name="category" class="block mt-1 w-full bg-gray-700 border-gray-600 rounded-md shadow-sm text-white focus:ring-teal-500 focus:border-teal-500 @error('category') border-red-500 @enderror" required>
                                 <option value="">Select Category</option>
                                 <option value="web" {{ old('category', $project->category) == 'web' ? 'selected' : '' }}>Web Development</option>
                                 <option value="branding" {{ old('category', $project->category) == 'branding' ? 'selected' : '' }}>Branding</option>
@@ -51,30 +49,30 @@
                                 <option value="production" {{ old('category', $project->category) == 'production' ? 'selected' : '' }}>Production</option>
                             </select>
                         </div>
-                        
+
                         <div>
                             <label for="technologies" class="block text-sm font-medium text-gray-300 mb-1">Technologies (comma-separated)</label>
-                            <input id="technologies" class="block mt-1 w-full bg-gray-700 border-gray-600 rounded-md shadow-sm text-white focus:ring-teal-500 focus:border-teal-500" type="text" name="technologies" value="{{ old('technologies', implode(', ', $project->technologies_array ?? [])) }}" placeholder="Laravel, Tailwind CSS, Vue.js, MySQL" required />
+                            <input id="technologies" class="block mt-1 w-full bg-gray-700 border-gray-600 rounded-md shadow-sm text-white focus:ring-teal-500 focus:border-teal-500 @error('technologies') border-red-500 @enderror" type="text" name="technologies" value="{{ old('technologies', implode(', ', $project->technologies_array ?? [])) }}" placeholder="Laravel, Tailwind CSS, Vue.js, MySQL" required />
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                         <div>
                             <label for="status" class="block text-sm font-medium text-gray-300 mb-1">Status</label>
-                            <select id="status" name="status" class="block mt-1 w-full bg-gray-700 border-gray-600 rounded-md shadow-sm text-white focus:ring-teal-500 focus:border-teal-500" required>
+                            <select id="status" name="status" class="block mt-1 w-full bg-gray-700 border-gray-600 rounded-md shadow-sm text-white focus:ring-teal-500 focus:border-teal-500 @error('status') border-red-500 @enderror" required>
                                 <option value="">Select Status</option>
                                 <option value="online" {{ old('status', $project->status) == 'online' ? 'selected' : '' }}>Online</option>
                                 <option value="offline" {{ old('status', $project->status) == 'offline' ? 'selected' : '' }}>Offline</option>
                                 <option value="template" {{ old('status', $project->status) == 'template' ? 'selected' : '' }}>Template</option>
                             </select>
                         </div>
-                        
-                        <div id="url-field" style="display: {{ old('status', $project->status) === 'online' ? 'block' : 'none' }};">
-                            <label for="url" class="block text-sm font-medium text-gray-300 mb-1">URL (for online projects)</label>
-                            <input id="url" class="block mt-1 w-full bg-gray-700 border-gray-600 rounded-md shadow-sm text-white focus:ring-teal-500 focus:border-teal-500" type="url" name="url" value="{{ old('url', $project->url) }}" placeholder="https://example.com" />
+
+                        <div id="url-field" class="url-field" style="display: {{ old('status', $project->status) === 'online' ? 'block' : 'none' }};">
+                            <label for="url" class="block text-sm font-medium text-gray-300 mb-1">Website URL (Optional if Online)</label>
+                            <input id="url" class="block mt-1 w-full bg-gray-700 border-gray-600 rounded-md shadow-sm text-white focus:ring-teal-500 focus:border-teal-500 @error('url') border-red-500 @enderror" type="url" name="url" value="{{ old('url', $project->url) }}" placeholder="https://example.com" />
                         </div>
                     </div>
-                    
+
                     @if($project->thumbnail)
                         <div class="mb-4">
                             <label class="block text-sm font-medium text-gray-300 mb-1">Current Thumbnail</label>
@@ -83,12 +81,12 @@
                             </div>
                         </div>
                     @endif
-                    
+
                     <div class="mb-4">
                         <label for="thumbnail" class="block text-sm font-medium text-gray-300 mb-1">New Thumbnail Image (optional)</label>
-                        <input id="thumbnail" type="file" name="thumbnail" class="block mt-1 w-full text-sm text-gray-400 bg-gray-700 border-gray-600 rounded-md file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-teal-500 file:text-white hover:file:bg-teal-600" accept="image/*" />
+                        <input id="thumbnail" type="file" name="thumbnail" class="block w-full text-sm text-gray-400 bg-gray-700 border-gray-600 rounded-md file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-teal-500 file:text-white hover:file:bg-teal-600 @error('thumbnail') border-red-500 @enderror" accept="image/*" />
                     </div>
-                    
+
                     @if($project->screenshots_array && count($project->screenshots_array) > 0)
                         <div class="mb-4">
                             <label class="block text-sm font-medium text-gray-300 mb-1">Current Screenshots</label>
@@ -107,19 +105,19 @@
                             </div>
                         </div>
                     @endif
-                    
+
                     <div class="mb-6">
                         <label for="screenshots" class="block text-sm font-medium text-gray-300 mb-1">Add Project Screenshots (optional)</label>
-                        <input id="screenshots" type="file" name="screenshots[]" multiple class="block mt-1 w-full text-sm text-gray-400 bg-gray-700 border-gray-600 rounded-md file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-teal-500 file:text-white hover:file:bg-teal-600" accept="image/*" />
-                        <p class="mt-1 text-sm text-gray-500">You can select multiple screenshots to add to the project.</p>
+                        <input id="screenshots" type="file" name="screenshots[]" multiple class="block w-full text-sm text-gray-400 bg-gray-700 border-gray-600 rounded-md file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-teal-500 file:text-white hover:file:bg-teal-600 @error('screenshots.*') border-red-500 @enderror" accept="image/*" />
+                        <p class="mt-1 text-xs text-gray-400">You can select multiple screenshots to add to the project.</p>
                     </div>
-                    
+
                     <div class="flex items-center justify-end mt-6">
                         <a href="{{ route('admin.projects.index') }}" class="mr-4 px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-500 transition">
                             Cancel
                         </a>
                         <button type="submit" class="px-4 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 dark:focus:ring-offset-gray-800 transition">
-                            {{ __('Update Project') }}
+                            Update Project
                         </button>
                     </div>
                 </form>
@@ -128,29 +126,31 @@
     </div>
 </div>
 
-@endsection
-
 @push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const statusSelect = document.getElementById('status');
-        const urlFieldContainer = document.getElementById('url-field');
+        const urlFieldContainer = document.querySelector('.url-field'); // Use class selector for flexibility
         const urlInput = document.getElementById('url');
 
         function toggleUrlField() {
-            if (statusSelect.value === 'online') {
-                urlFieldContainer.style.display = 'block';
-                urlInput.setAttribute('required', 'required');
-            } else {
-                urlFieldContainer.style.display = 'none';
-                urlInput.removeAttribute('required');
+            if (statusSelect && urlFieldContainer && urlInput) { // Ensure elements exist
+                if (statusSelect.value === 'online') {
+                    urlFieldContainer.style.display = 'block';
+                    // urlInput.setAttribute('required', 'required'); // REMOVED: URL is optional even if online
+                } else {
+                    urlFieldContainer.style.display = 'none';
+                    // urlInput.removeAttribute('required'); // Still good to ensure it's not required if not online
+                    // urlInput.value = ''; // Optionally clear if you want
+                }
             }
         }
         
-        if (statusSelect) { // Ensure elements exist before adding listeners
+        if (statusSelect) {
             toggleUrlField(); // Run on initial load
             statusSelect.addEventListener('change', toggleUrlField);
         }
     });
 </script>
 @endpush
+@endsection

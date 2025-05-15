@@ -136,7 +136,7 @@
     <header class="fixed w-full z-50 bg-gray-900/80 backdrop-blur-md">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
             <a href="#home" class="flex items-center">
-                <img src="/images/logo.png" alt="MHA Plus Logo" class="h-12">
+                <img src="/images/logo.png" alt="MHA Plus Logo" class="h-10">
                 <span class="ml-3 text-xl font-semibold text-white hidden sm:inline-block">MHA <span class="gradient-text">Plus</span></span>
             </a>
     
@@ -283,55 +283,104 @@
                 {{-- Add your client logos here. Duplicate the set for seamless looping --}}
                 {{-- Set 1 --}}
                 <div class="logo-slide">
-                    <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Client+1" alt="Client Logo 1">
+                    <img src="/images/landrover.png" alt="Client Logo 1">
                 </div>
                 <div class="logo-slide">
-                    <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Client+2" alt="Client Logo 2">
+                    <img src="/images/sahara.jpg" alt="Client Logo 2">
                 </div>
                 <div class="logo-slide">
-                    <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Client+3" alt="Client Logo 3">
+                    <img src="/images/nightclub.png" alt="Client Logo 3">
                 </div>
                 <div class="logo-slide">
-                    <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Client+4" alt="Client Logo 4">
+                    <img src="/images/familysport.png" alt="Client Logo 4">
                 </div>
                 <div class="logo-slide">
-                    <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Client+5" alt="Client Logo 5">
+                    <img src="/images/kattan21.jpg" alt="Client Logo 5">
                 </div>
                 <div class="logo-slide">
-                    <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Client+6" alt="Client Logo 6">
+                    <img src="/images/mhatravel.png" alt="Client Logo 6">
                 </div>
                  <div class="logo-slide">
-                    <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Client+7" alt="Client Logo 7">
+                    <img src="/images/aminojula.jpg" alt="Client Logo 7">
                 </div>
                  <div class="logo-slide">
-                    <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Client+8" alt="Client Logo 8">
+                    <img src="/images/girlhouse.jpg" alt="Client Logo 8">
+                </div>
+                <div class="logo-slide">
+                    <img src="/images/pcgamenet.jpg" alt="Client Logo 9">
+                </div>
+                <div class="logo-slide">
+                    <img src="/images/fscollection.jpg" alt="Client Logo 10">
+                </div>
+                <div class="logo-slide">
+                    <img src="/images/krg_logo.png" alt="Client Logo 11">
+                </div>
+                <div class="logo-slide">
+                    <img src="/images/tmtgroup.png" alt="Client Logo 12">
+                </div>
+                <div class="logo-slide">
+                    <img src="/images/jordanfriendship.png" alt="Client Logo 13">
+                </div>
+                <div class="logo-slide">
+                    <img src="/images/armanicafe.jpg" alt="Client Logo 14">
+                </div>
+                <div class="logo-slide">
+                    <img src="/images/barak.png" alt="Client Logo 15">
+                </div>
+                <div class="logo-slide">
+                    <img src="/images/media.jpg" alt="Client Logo 16">
                 </div>
 
                 {{-- Set 2 (Duplicate of Set 1 for seamless loop) --}}
-                 <div class="logo-slide">
-                    <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Client+1" alt="Client Logo 1">
+                <div class="logo-slide">
+                    <img src="/images/landrover.png" alt="Client Logo 1">
                 </div>
                 <div class="logo-slide">
-                    <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Client+2" alt="Client Logo 2">
+                    <img src="/images/sahara.jpg" alt="Client Logo 2">
                 </div>
                 <div class="logo-slide">
-                    <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Client+3" alt="Client Logo 3">
+                    <img src="/images/nightclub.png" alt="Client Logo 3">
                 </div>
                 <div class="logo-slide">
-                    <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Client+4" alt="Client Logo 4">
+                    <img src="/images/familysport.png" alt="Client Logo 4">
                 </div>
                 <div class="logo-slide">
-                    <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Client+5" alt="Client Logo 5">
+                    <img src="/images/kattan21.jpg" alt="Client Logo 5">
                 </div>
                 <div class="logo-slide">
-                    <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Client+6" alt="Client Logo 6">
-                </div>
-                 <div class="logo-slide">
-                    <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Client+7" alt="Client Logo 7">
+                    <img src="/images/mhatravel.png" alt="Client Logo 6">
                 </div>
                  <div class="logo-slide">
-                    <img src="https://placehold.co/150x80/e2e8f0/64748b?text=Client+8" alt="Client Logo 8">
+                    <img src="/images/aminojula.jpg" alt="Client Logo 7">
                 </div>
+                 <div class="logo-slide">
+                    <img src="/images/girlhouse.jpg" alt="Client Logo 8">
+                </div>
+                <div class="logo-slide">
+                    <img src="/images/pcgamenet.jpg" alt="Client Logo 9">
+                </div>
+                <div class="logo-slide">
+                    <img src="/images/fscollection.jpg" alt="Client Logo 10">
+                </div>
+                <div class="logo-slide">
+                    <img src="/images/krg_logo.png" alt="Client Logo 11">
+                </div>
+                <div class="logo-slide">
+                    <img src="/images/tmtgroup.png" alt="Client Logo 12">
+                </div>
+                <div class="logo-slide">
+                    <img src="/images/jordanfriendship.png" alt="Client Logo 13">
+                </div>
+                <div class="logo-slide">
+                    <img src="/images/armanicafe.jpg" alt="Client Logo 14">
+                </div>
+                <div class="logo-slide">
+                    <img src="/images/barak.png" alt="Client Logo 15">
+                </div>
+                <div class="logo-slide">
+                    <img src="/images/media.jpg" alt="Client Logo 16">
+                </div>
+                
             </div>
         </div>
     </section>
@@ -446,7 +495,7 @@
                         </div>
                         <div>
                             <h3 class="text-xl font-semibold text-white mb-2">Call Us</h3>
-                            <p class="text-gray-400"><a href="tel:+964XXXXXXXXXX" class="hover:text-teal-400">+964 XXX XXX XXXX</a></p> {{-- Replace with actual number --}}
+                            <p class="text-gray-400"><a href="tel:+964XXXXXXXXXX" class="hover:text-teal-400">+964 750 651 1045</a></p> {{-- Replace with actual number --}}
                         </div>
                     </div>
 
@@ -533,7 +582,7 @@
             {{-- Column 1: Logo/About --}}
             <div class="col-span-1 md:col-span-1">
                 <div class="flex items-center mb-4">
-                    <img src="/images/logo.png" alt="MHA Plus Logo" class="h-16">
+                    <img src="/images/logo.png" alt="MHA Plus Logo" class="h-12">
                     <span class="ml-3 text-xl font-semibold text-white">MHA <span class="gradient-text">Plus</span></span>
                 </div>
                 <p class="text-gray-400 mb-6">Your complete marketing solution in Erbil, Iraq. We deliver high-quality services tailored to your business needs.</p>
