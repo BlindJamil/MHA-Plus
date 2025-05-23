@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 // --- Public Routes ---
 Route::get('/', [ProjectController::class, 'index'])->name('home');
 Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
+Route::get('/portfolio', [ProjectController::class, 'showAllProjectsPage'])->name('portfolio.index'); // <-- New portfolio page route
 Route::post('/newsletter-subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 Route::post('/contact-submit', [ContactController::class, 'store'])->name('contact.store'); // <<< Add this route
 

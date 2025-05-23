@@ -1,3 +1,4 @@
+{{-- resources/views/admin/projects/edit.blade.php --}}
 @extends('layouts.admin')
 
 @section('title', 'Edit Project: ' . $project->title)
@@ -49,17 +50,16 @@
                                 <option value="production" {{ old('category', $project->category) == 'production' ? 'selected' : '' }}>Production</option>
                             </select>
                         </div>
-
-                        <div>
+                        <div id="technologies-container">
                             <label for="technologies" class="block text-sm font-medium text-gray-300 mb-1">Technologies (comma-separated)</label>
-                            <input id="technologies" class="block mt-1 w-full bg-gray-700 border-gray-600 rounded-md shadow-sm text-white focus:ring-teal-500 focus:border-teal-500 @error('technologies') border-red-500 @enderror" type="text" name="technologies" value="{{ old('technologies', implode(', ', $project->technologies_array ?? [])) }}" placeholder="Laravel, Tailwind CSS, Vue.js, MySQL" required />
+                            <input id="technologies" class="block mt-1 w-full bg-gray-700 border-gray-600 rounded-md shadow-sm text-white focus:ring-teal-500 focus:border-teal-500 @error('technologies') border-red-500 @enderror" type="text" name="technologies" value="{{ old('technologies', implode(', ', $project->technologies_array ?? [])) }}" placeholder="Laravel, Tailwind CSS, Vue.js, MySQL" />
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        <div>
+                        <div id="status-container">
                             <label for="status" class="block text-sm font-medium text-gray-300 mb-1">Status</label>
-                            <select id="status" name="status" class="block mt-1 w-full bg-gray-700 border-gray-600 rounded-md shadow-sm text-white focus:ring-teal-500 focus:border-teal-500 @error('status') border-red-500 @enderror" required>
+                            <select id="status" name="status" class="block mt-1 w-full bg-gray-700 border-gray-600 rounded-md shadow-sm text-white focus:ring-teal-500 focus:border-teal-500 @error('status') border-red-500 @enderror">
                                 <option value="">Select Status</option>
                                 <option value="online" {{ old('status', $project->status) == 'online' ? 'selected' : '' }}>Online</option>
                                 <option value="offline" {{ old('status', $project->status) == 'offline' ? 'selected' : '' }}>Offline</option>
@@ -67,7 +67,7 @@
                             </select>
                         </div>
 
-                        <div id="url-field" class="url-field" style="display: {{ old('status', $project->status) === 'online' ? 'block' : 'none' }};">
+                        <div class="url-field" style="display: {{ old('category', $project->category) === 'web' && old('status', $project->status) === 'online' ? 'block' : 'none' }};">
                             <label for="url" class="block text-sm font-medium text-gray-300 mb-1">Website URL (Optional if Online)</label>
                             <input id="url" class="block mt-1 w-full bg-gray-700 border-gray-600 rounded-md shadow-sm text-white focus:ring-teal-500 focus:border-teal-500 @error('url') border-red-500 @enderror" type="url" name="url" value="{{ old('url', $project->url) }}" placeholder="https://example.com" />
                         </div>
@@ -129,26 +129,49 @@
 @push('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const statusSelect = document.getElementById('status');
-        const urlFieldContainer = document.querySelector('.url-field'); // Use class selector for flexibility
+        const categorySelect = document.getElementById('category');
+        const technologiesContainer = document.getElementById('technologies-container');
+        const technologiesInput = document.getElementById('technologies');
+        const statusContainer = document.getElementById('status-container');
+        const statusInput = document.getElementById('status');
+        const urlContainer = document.querySelector('.url-field');
         const urlInput = document.getElementById('url');
 
-        function toggleUrlField() {
-            if (statusSelect && urlFieldContainer && urlInput) { // Ensure elements exist
-                if (statusSelect.value === 'online') {
-                    urlFieldContainer.style.display = 'block';
-                    // urlInput.setAttribute('required', 'required'); // REMOVED: URL is optional even if online
-                } else {
-                    urlFieldContainer.style.display = 'none';
-                    // urlInput.removeAttribute('required'); // Still good to ensure it's not required if not online
-                    // urlInput.value = ''; // Optionally clear if you want
+        function toggleProjectFields() {
+            const selectedCategory = categorySelect.value;
+
+            if (selectedCategory === 'web') {
+                if (technologiesContainer) technologiesContainer.style.display = 'block';
+                if (technologiesInput) technologiesInput.setAttribute('required', 'required');
+
+                if (statusContainer) statusContainer.style.display = 'block';
+                if (statusInput) statusInput.setAttribute('required', 'required');
+
+                if (urlContainer) {
+                    if (statusInput && statusInput.value === 'online') {
+                        urlContainer.style.display = 'block';
+                    } else {
+                        urlContainer.style.display = 'none';
+                    }
                 }
+            } else { // Non-web categories
+                if (technologiesContainer) technologiesContainer.style.display = 'none';
+                if (technologiesInput) technologiesInput.removeAttribute('required');
+
+                if (statusContainer) statusContainer.style.display = 'none';
+                if (statusInput) statusInput.removeAttribute('required');
+                
+                if (urlContainer) urlContainer.style.display = 'none';
+                if (urlInput) urlInput.removeAttribute('required');
             }
         }
-        
-        if (statusSelect) {
-            toggleUrlField(); // Run on initial load
-            statusSelect.addEventListener('change', toggleUrlField);
+
+        if (categorySelect) {
+            categorySelect.addEventListener('change', toggleProjectFields);
+             if (statusInput) { // Ensure statusInput exists
+                statusInput.addEventListener('change', toggleProjectFields);
+            }
+            toggleProjectFields(); // Initial call
         }
     });
 </script>

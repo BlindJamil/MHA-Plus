@@ -1,25 +1,43 @@
 <?php
-
+// app/Http/Controllers/ProjectController.php
 namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str; // Import Str for Str::limit if not already
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::latest()->get();
+        $allProjects = Project::latest()->get();
 
         if (request()->is('admin*')) {
-            return view('admin.projects.index', compact('projects'));
+            return view('admin.projects.index', ['projects' => $allProjects]);
         }
 
-        return view('welcome', compact('projects'));
+        // For public welcome page
+        $projectsForWelcomePage = $allProjects->take(6);
+        $totalProjectsCount = $allProjects->count();
+
+        return view('welcome', [
+            'projects' => $projectsForWelcomePage,
+            'totalProjects' => $totalProjectsCount
+        ]);
     }
 
+    public function showAllProjectsPage()
+    {
+        $projectsPerPage = 12;
+        // Eager load screenshots and technologies if they are frequently accessed in the loop
+        // to avoid N+1 query issues, though with simple attributes it might not be an issue.
+        // For now, standard pagination is fine.
+        $projects = Project::latest()->paginate($projectsPerPage);
+        return view('portfolio.index', compact('projects'));
+    }
+
+    // ... other methods (show, create, store, edit, update, destroy, preview) remain the same as previously updated ...
     public function show($id)
     {
         $project = Project::findOrFail($id);
@@ -33,40 +51,49 @@ class ProjectController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $rules = [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'category' => 'required|string',
-            'technologies' => 'required|string',
-            'status' => 'required|string|in:online,offline,template',
+            'technologies' => 'nullable|string',
+            'status' => 'nullable|string|in:online,offline,template',
             'url' => 'nullable|url|max:2048',
             'thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'screenshots' => 'nullable|array',
             'screenshots.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-        ]);
+        ];
+
+        if ($request->input('category') === 'web') {
+            $rules['technologies'] = 'required|string';
+            $rules['status'] = 'required|string|in:online,offline,template';
+        }
+
+        $validated = $request->validate($rules);
 
         $updateData = $validated;
+
+        $updateData['technologies'] = !empty($validated['technologies']) ?
+            json_encode(array_values(array_map('trim', explode(',', $validated['technologies'])))) :
+            json_encode([]);
+
+        if ($validated['category'] === 'web') {
+            if ($validated['status'] === 'online' && !empty($validated['url'])) {
+                // URL is already in $updateData from $validated
+            } else {
+                $updateData['url'] = null;
+            }
+        } else {
+            $updateData['status'] = $validated['status'] ?? 'offline';
+            $updateData['url'] = null;
+        }
         
-        // Prepare technologies
-        $techArray = array_map('trim', explode(',', $validated['technologies']));
-        $updateData['technologies'] = json_encode(array_values($techArray)); // Ensure it's a JSON array
+        if (isset($updateData['screenshots'])) {
+            unset($updateData['screenshots']);
+        }
 
         if ($request->hasFile('thumbnail')) {
             $updateData['thumbnail'] = $request->file('thumbnail')->store('projects/thumbnails', 'public');
         }
-
-        if ($validated['status'] !== 'online' || empty($validated['url'])) {
-            $updateData['url'] = null;
-        } else {
-            $updateData['url'] = $validated['url'];
-        }
-        
-        // Remove screenshots from $updateData before Project::create if it's processed later
-        // (it is, so we can unset it here or just ensure it's not an array)
-        if (isset($updateData['screenshots'])) {
-            unset($updateData['screenshots']); // Screenshots are handled after project creation
-        }
-
 
         $project = Project::create($updateData);
 
@@ -78,7 +105,7 @@ class ProjectController extends Controller
                 }
             }
             if (!empty($paths)) {
-                $project->screenshots = json_encode(array_values($paths)); // Ensure JSON array
+                $project->screenshots = json_encode(array_values($paths));
                 $project->save();
             }
         }
@@ -93,56 +120,78 @@ class ProjectController extends Controller
 
     public function update(Request $request, Project $project)
     {
-        $validated = $request->validate([
+        $rules = [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'category' => 'required|string',
-            'technologies' => 'required|string',
-            'status' => 'required|string|in:online,offline,template',
+            'technologies' => 'nullable|string',
+            'status' => 'nullable|string|in:online,offline,template',
             'url' => 'nullable|url|max:2048',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'screenshots' => 'nullable|array',
             'screenshots.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'delete_screenshots' => 'nullable|array',
             'delete_screenshots.*' => 'integer',
-        ]);
-
-        $updateData = [
-            'title' => $validated['title'],
-            'description' => $validated['description'],
-            'category' => $validated['category'],
-            // Prepare technologies
-            'technologies' => json_encode(array_values(array_map('trim', explode(',', $validated['technologies'])))), // Ensure JSON array
-            'status' => $validated['status'],
         ];
 
-        if ($validated['status'] === 'online' && !empty($validated['url'])) {
-            $updateData['url'] = $validated['url'];
-        } else {
-            $updateData['url'] = null;
+        if ($request->input('category') === 'web') {
+            $rules['technologies'] = 'required|string';
+            $rules['status'] = 'required|string|in:online,offline,template';
         }
 
+        $validated = $request->validate($rules);
+        
+        $updateData = $validated;
+
+        $updateData['technologies'] = !empty($validated['technologies']) ?
+            json_encode(array_values(array_map('trim', explode(',', $validated['technologies'])))) :
+            json_encode([]);
+
+        if ($validated['category'] === 'web') {
+            if ($validated['status'] === 'online' && !empty($validated['url'])) {
+                // URL already in $updateData
+            } else {
+                $updateData['url'] = null;
+            }
+        } else { 
+            if (is_null($validated['status'])) {
+                $updateData['status'] = ($project->category === 'web' && $validated['category'] !== 'web') ? 'offline' : $project->status;
+            } else {
+                $updateData['status'] = $validated['status'];
+            }
+            $updateData['url'] = null;
+        }
+        
         if ($request->hasFile('thumbnail')) {
             if ($project->thumbnail) {
                 Storage::disk('public')->delete($project->thumbnail);
             }
             $updateData['thumbnail'] = $request->file('thumbnail')->store('projects/thumbnails', 'public');
+        } else {
+             if (array_key_exists('thumbnail', $updateData)){ // if thumbnail was part of validated data (e.g. cleared from form but not a file upload)
+                unset($updateData['thumbnail']); // Prevent overwriting existing thumbnail with null if no new file is uploaded
+            }
         }
 
-        // Handle screenshots
+        $newScreenshotsInputForUpdate = $updateData['screenshots'] ?? null; 
+        $deleteScreenshotsInputForUpdate = $updateData['delete_screenshots'] ?? null;
+        unset($updateData['screenshots'], $updateData['delete_screenshots']);
+
+        $project->update($updateData);
+
         $currentScreenshots = $project->screenshots_array ?? [];
         $finalScreenshots = [];
 
         if (!empty($currentScreenshots)) {
             foreach ($currentScreenshots as $index => $screenshotPath) {
-                if (!(isset($validated['delete_screenshots']) && in_array((string)$index, $validated['delete_screenshots'], true))) {
+                if (!($deleteScreenshotsInputForUpdate && in_array((string)$index, $deleteScreenshotsInputForUpdate, true))) {
                     $finalScreenshots[] = $screenshotPath;
                 } else {
                     Storage::disk('public')->delete($screenshotPath);
                 }
             }
         }
-
+        
         if ($request->hasFile('screenshots')) {
             foreach ($request->file('screenshots') as $file) {
                 if ($file && $file->isValid()) {
@@ -151,15 +200,11 @@ class ProjectController extends Controller
             }
         }
         
-        // Only assign screenshots to updateData if there were actual changes.
-        // And ensure it's a JSON array string.
         $newScreenshotsJson = json_encode(array_values($finalScreenshots));
         if ($project->screenshots !== $newScreenshotsJson) {
-             $updateData['screenshots'] = $newScreenshotsJson;
+             $project->screenshots = $newScreenshotsJson;
+             $project->save();
         }
-
-
-        $project->update($updateData);
 
         return redirect()->route('admin.projects.index')->with('success', 'Project updated successfully.');
     }
@@ -172,7 +217,6 @@ class ProjectController extends Controller
             return redirect()->route('projects.show', $project->id)
                 ->with('error', 'No preview available for this project.');
         }
-
         return view('previews.show', compact('project'));
     }
 
@@ -181,7 +225,6 @@ class ProjectController extends Controller
         if ($project->thumbnail) {
             Storage::disk('public')->delete($project->thumbnail);
         }
-
         if ($project->screenshots) {
             $screenshotsArray = json_decode($project->screenshots, true);
             if (is_array($screenshotsArray)) {
@@ -191,9 +234,7 @@ class ProjectController extends Controller
             }
         }
         Storage::disk('public')->deleteDirectory('projects/screenshots/' . $project->id);
-
         $project->delete();
-
         return redirect()->route('admin.projects.index')->with('success', 'Project deleted successfully.');
     }
 }

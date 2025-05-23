@@ -1,3 +1,5 @@
+{{-- resources/views/admin/projects/index.blade.php --}}
+{{-- Minor change to display status for non-web projects --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,44 +12,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-gray-900 text-gray-300">
-    {{-- Consider using @extends('layouts.admin') here for consistency --}}
-    <header class="bg-gray-800 p-4 border-b border-gray-700">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-xl font-bold text-white">MHA Plus Admin</h1>
-            <nav>
-                <ul class="flex space-x-4">
-                    <li><a href="{{ route('admin.dashboard') }}" class="text-gray-300 hover:text-white">Dashboard</a></li>
-                    <li><a href="{{ route('admin.projects.index') }}" class="text-teal-400">Projects</a></li>
-                    <li><a href="{{ route('home') }}" class="text-gray-300 hover:text-white">View Site</a></li>
-                    <li>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="text-gray-300 hover:text-white">Logout</button>
-                        </form>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    @extends('layouts.admin') {{-- Assuming you want to use the admin layout --}}
     
+    @section('title', 'Admin - Projects')
+    
+    @section('content')
     <main class="container mx-auto px-4 py-8">
         <div class="flex justify-between items-center mb-6">
-            <h2 class="text-2xl font-bold">Projects</h2>
+            <h2 class="text-2xl font-bold text-white">Projects</h2>
             <a href="{{ route('admin.projects.create') }}" class="px-4 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700">Add New Project</a>
         </div>
         
-        @if(session('success'))
-            <div class="bg-green-500/20 text-green-400 p-4 mb-6 rounded-md">
-                {{ session('success') }}
-            </div>
-        @endif
+        {{-- Session messages are handled by layouts.admin --}}
         
         @if($projects->isEmpty())
             <div class="bg-gray-800 p-6 rounded-md">
                 <p>No projects found. Create your first project by clicking the "Add New Project" button.</p>
             </div>
         @else
-            <div class="bg-gray-800 rounded-md overflow-hidden">
+            <div class="bg-gray-800 rounded-md overflow-x-auto shadow-lg">
                 <table class="min-w-full divide-y divide-gray-700">
                     <thead class="bg-gray-700">
                         <tr>
@@ -65,16 +48,15 @@
                                         @if($project->thumbnail)
                                             <img src="{{ asset('storage/' . $project->thumbnail) }}" alt="{{ $project->title }}" class="h-10 w-10 rounded-md object-cover mr-3">
                                         @else
-                                            <div class="h-10 w-10 rounded-md bg-gray-700 flex items-center justify-center mr-3">
-                                                <i class="fas fa-image text-gray-500"></i>
+                                            <div class="h-10 w-10 rounded-md bg-gray-700 flex items-center justify-center mr-3 text-gray-500">
+                                                <i class="fas fa-image"></i>
                                             </div>
                                         @endif
-                                        <span class="font-medium">{{ $project->title }}</span>
+                                        <span class="font-medium text-white">{{ $project->title }}</span>
                                     </div>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ ucfirst($project->category) }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-400">{{ ucfirst($project->category) }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    {{-- Only show status for web projects --}}
                                     @if($project->category === 'web')
                                         @if($project->is_online)
                                             <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded-full text-xs">Online</span>
@@ -83,8 +65,9 @@
                                         @else {{-- Template --}}
                                             <span class="px-2 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs">Template</span>
                                         @endif
+                                    @else
+                                         <span class="text-gray-500 text-xs">—</span> {{-- Indicate N/A or different handling for non-web --}}
                                     @endif
-                                    {{-- End status display --}}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm">
                                     <a href="{{ route('projects.show', $project->id) }}" target="_blank" class="text-blue-400 hover:text-blue-300 mx-1" title="View"><i class="fas fa-eye"></i></a>
@@ -102,13 +85,6 @@
             </div>
         @endif
     </main>
-    
-    <footer class="bg-gray-800 py-4 border-t border-gray-700 mt-8">
-        <div class="container mx-auto px-4 text-center text-gray-500">
-            &copy; {{ date('Y') }} MHA Plus. All rights reserved.
-        </div>
-    </footer>
-    
-    @vite('resources/js/app.js')
+    @endsection
 </body>
 </html>
