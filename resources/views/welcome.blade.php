@@ -299,7 +299,7 @@
                     <img src="/images/kattan21.jpg" alt="Client Logo 5">
                 </div>
                 <div class="logo-slide">
-                    <img src="/images/mhatravel.png" alt="Client Logo 6">
+                    <img src="/images/MHATravel.png" alt="Client Logo 6">
                 </div>
                  <div class="logo-slide">
                     <img src="/images/aminojula.jpg" alt="Client Logo 7">
