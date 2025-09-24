@@ -47,7 +47,7 @@
                     @if($project->screenshots_array && count($project->screenshots_array) > 0)
                         <div class="mb-4">
                             <img 
-                                src="{{ asset('storage/' . $project->screenshots_array[0]) }}" 
+                                src="{{ asset('uploads/' . $project->screenshots_array[0]) }}" 
                                 alt="{{ $project->title }} screenshot" 
                                 class="w-full rounded-lg shadow-lg"
                                 id="main-screenshot"
@@ -59,11 +59,11 @@
                                 @foreach($project->screenshots_array as $index => $screenshot)
                                     <div 
                                         class="aspect-video rounded-md overflow-hidden cursor-pointer screenshot-thumbnail {{ $index === 0 ? 'ring-2 ring-teal-500' : '' }}" 
-                                        data-src="{{ asset('storage/' . $screenshot) }}"
+                                        data-src="{{ asset('uploads/' . $screenshot) }}"
                                         data-index="{{ $index }}"
                                     >
                                         <img 
-                                            src="{{ asset('storage/' . $screenshot) }}" 
+                                            src="{{ asset('uploads/' . $screenshot) }}" 
                                             alt="{{ $project->title }} screenshot {{ $index + 1 }}" 
                                             class="w-full h-full object-cover"
                                         >

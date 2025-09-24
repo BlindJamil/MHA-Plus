@@ -349,7 +349,7 @@
                     <img src="/images/kattan21.jpg" alt="Client Logo 5">
                 </div>
                 <div class="logo-slide">
-                    <img src="/images/mhatravel.png" alt="Client Logo 6">
+                    <img src="/images/MHATravel.png" alt="Client Logo 6">
                 </div>
                  <div class="logo-slide">
                     <img src="/images/aminojula.jpg" alt="Client Logo 7">
@@ -410,12 +410,12 @@
                     <div class="portfolio-item {{ $project->category }}" data-aos="fade-up" data-aos-delay="{{ ($loop->index % 3) * 100 }}">
                         <div class="group relative overflow-hidden rounded-lg shadow-lg bg-gray-800">
                             @if($project->thumbnail)
-                                <a href="{{ asset('storage/' . $project->thumbnail) }}" data-lightbox="portfolio-home-{{ $project->id }}" data-title="{{ $project->title }}">
-                                    <img src="{{ asset('storage/' . $project->thumbnail) }}" alt="{{ $project->title }}" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                                <a href="{{ asset('uploads/' . $project->thumbnail) }}" data-lightbox="portfolio-home-{{ $project->id }}" data-title="{{ $project->title }}">
+                                    <img src="{{ asset('uploads/' . $project->thumbnail) }}" alt="{{ $project->title }}" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
                                 </a>
                                 @if($project->screenshots_array && count($project->screenshots_array) > 0)
                                     @foreach($project->screenshots_array as $screenshotPath)
-                                        <a href="{{ asset('storage/' . $screenshotPath) }}" data-lightbox="portfolio-home-{{ $project->id }}" data-title="{{ $project->title }} - Screenshot" class="hidden"></a>
+                                        <a href="{{ asset('uploads/' . $screenshotPath) }}" data-lightbox="portfolio-home-{{ $project->id }}" data-title="{{ $project->title }} - Screenshot" class="hidden"></a>
                                     @endforeach
                                 @endif
                             @else

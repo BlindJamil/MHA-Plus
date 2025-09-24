@@ -134,12 +134,12 @@ class ProjectController extends Controller
             $updateData['url'] = null;
         }
         if (isset($updateData['screenshots'])) unset($updateData['screenshots']);
-        if ($request->hasFile('thumbnail')) $updateData['thumbnail'] = $request->file('thumbnail')->store('projects/thumbnails', 'public');
+    if ($request->hasFile('thumbnail')) $updateData['thumbnail'] = $request->file('thumbnail')->store('projects/thumbnails', 'uploads');
         $project = Project::create($updateData);
         if ($request->hasFile('screenshots')) {
             $paths = [];
             foreach ($request->file('screenshots') as $file) {
-                if ($file && $file->isValid()) $paths[] = $file->store('projects/screenshots/' . $project->id, 'public');
+                if ($file && $file->isValid()) $paths[] = $file->store('projects/screenshots/' . $project->id, 'uploads');
             }
             if (!empty($paths)) {
                 $project->screenshots = json_encode(array_values($paths));
@@ -183,8 +183,8 @@ class ProjectController extends Controller
             $updateData['url'] = null;
         }
         if ($request->hasFile('thumbnail')) {
-            if ($project->thumbnail) Storage::disk('public')->delete($project->thumbnail);
-            $updateData['thumbnail'] = $request->file('thumbnail')->store('projects/thumbnails', 'public');
+            if ($project->thumbnail) Storage::disk('uploads')->delete($project->thumbnail);
+            $updateData['thumbnail'] = $request->file('thumbnail')->store('projects/thumbnails', 'uploads');
         } elseif (array_key_exists('thumbnail', $updateData)) {
             unset($updateData['thumbnail']);
         }
@@ -198,13 +198,13 @@ class ProjectController extends Controller
                 if (!($deleteScreenshotsInputForUpdate && in_array((string)$index, $deleteScreenshotsInputForUpdate, true))) {
                     $finalScreenshots[] = $screenshotPath;
                 } else {
-                    Storage::disk('public')->delete($screenshotPath);
+                    Storage::disk('uploads')->delete($screenshotPath);
                 }
             }
         }
         if ($request->hasFile('screenshots')) {
             foreach ($request->file('screenshots') as $file) {
-                if ($file && $file->isValid()) $finalScreenshots[] = $file->store('projects/screenshots/' . $project->id, 'public');
+                if ($file && $file->isValid()) $finalScreenshots[] = $file->store('projects/screenshots/' . $project->id, 'uploads');
             }
         }
         $newScreenshotsJson = json_encode(array_values($finalScreenshots));
@@ -226,14 +226,14 @@ class ProjectController extends Controller
 
     public function destroy(Project $project)
     {
-        if ($project->thumbnail) Storage::disk('public')->delete($project->thumbnail);
+        if ($project->thumbnail) Storage::disk('uploads')->delete($project->thumbnail);
         if ($project->screenshots) {
             $screenshotsArray = json_decode($project->screenshots, true);
             if (is_array($screenshotsArray)) {
-                foreach ($screenshotsArray as $screenshot) Storage::disk('public')->delete($screenshot);
+                foreach ($screenshotsArray as $screenshot) Storage::disk('uploads')->delete($screenshot);
             }
         }
-        Storage::disk('public')->deleteDirectory('projects/screenshots/' . $project->id);
+        Storage::disk('uploads')->deleteDirectory('projects/screenshots/' . $project->id);
         $project->delete();
         return redirect()->route('admin.projects.index')->with('success', 'Project deleted successfully.');
     }

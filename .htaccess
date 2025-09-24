@@ -2,7 +2,7 @@
   RewriteEngine On
 
   # Serve static assets from /public
-  RewriteCond %{REQUEST_URI} ^/(build|images|storage|favicon\.ico|robots\.txt) [NC]
+  RewriteCond %{REQUEST_URI} ^/(build|images|storage|uploads|favicon\.ico|robots\.txt) [NC]
   RewriteRule ^ public%{REQUEST_URI} [L]
 
   # If the requested file or directory exists at the root, serve it
