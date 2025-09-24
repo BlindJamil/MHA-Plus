@@ -63,12 +63,12 @@ class ProjectController extends Controller
                 'title' => $project->title,
                 'category' => $project->category, // Crucial for debugging on the frontend if needed
                 'description_limited' => Str::limit($project->description, 80),
-                'thumbnail_url' => $project->thumbnail ? asset('storage/' . $project->thumbnail) : null,
+                'thumbnail_url' => $project->thumbnail ? asset('uploads/' . $project->thumbnail) : null,
                 'screenshots_array' => $project->screenshots_array ? collect($project->screenshots_array)->map(function($path) {
                     // Ensure the path from DB is correctly formed for asset() if it's not already full
                     // If screenshots_array already contains full URLs or is handled differently, adjust here.
                     // Assuming $path is relative to 'storage/' like 'projects/screenshots/ID/filename.jpg'
-                    return asset('storage/' . $path);
+                    return asset('uploads/' . $path);
                 })->all() : [],
                 'technologies_array' => $project->technologies_array ?? [],
                 'project_details_url' => route('projects.show', $project->id),
