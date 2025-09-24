@@ -89,21 +89,22 @@
             display: inline-block;
             animation: scrollLogos 40s linear infinite; /* Adjust duration for speed (longer = slower) */
         }
-
-        .logo-slider:hover .logo-slider-track {
-            animation-play-state: paused; /* Pause animation on hover */
+        /* Will be toggled via JS when interacting with a specific logo */
+        .logo-slider-track.paused {
+            animation-play-state: paused;
         }
 
         .logo-slide {
             display: inline-block; /* Changed from inline-flex */
-            align-items: center;
-            justify-content: center;
+            vertical-align: middle;
             height: 80px; /* Adjust height as needed */
-            width: auto; /* Let width be determined by content or specific width below */
             margin: 0 40px; /* Space between logos */
-            filter: grayscale(100%);
-            opacity: 0.6;
-            transition: filter 0.3s ease, opacity 0.3s ease;
+            /* Always colorful */
+            filter: none;
+            opacity: 1;
+            /* Smooth scale on interaction */
+            transform-origin: center;
+            transition: transform 200ms ease, filter 200ms ease, opacity 200ms ease;
         }
         .logo-slide img {
              max-height: 100%; /* Ensure image fits within the height */
@@ -111,10 +112,10 @@
              width: auto; /* Maintain aspect ratio */
              vertical-align: middle; /* Align images vertically */
         }
-
-        .logo-slider:hover .logo-slide {
-            filter: grayscale(0%);
-            opacity: 1;
+        /* Enlarge the specific logo being interacted with */
+        .logo-slide:hover,
+        .logo-slide:focus {
+            transform: scale(1.12);
         }
 
         @keyframes scrollLogos {
@@ -809,6 +810,51 @@
                  }
             });
         });
+
+        // Logo slider: pause only when interacting with a specific logo and scale it smoothly
+        (function () {
+            const track = document.querySelector('.logo-slider-track');
+            const slides = document.querySelectorAll('.logo-slide');
+            if (!track || slides.length === 0) return;
+
+            // Allow keyboard focus on slides for accessibility
+            slides.forEach(slide => slide.setAttribute('tabindex', '0'));
+
+            const pause = () => track.classList.add('paused');
+            const resume = () => track.classList.remove('paused');
+
+            slides.forEach(slide => {
+                // Mouse interactions
+                slide.addEventListener('mouseenter', pause);
+                slide.addEventListener('mouseleave', resume);
+                slide.addEventListener('mousedown', pause);
+                slide.addEventListener('mouseup', resume);
+
+                // Touch interactions
+                slide.addEventListener('touchstart', () => {
+                    pause();
+                }, { passive: true });
+                slide.addEventListener('touchend', () => {
+                    resume();
+                });
+
+                // Keyboard focus interactions
+                slide.addEventListener('focus', pause);
+                slide.addEventListener('blur', resume);
+
+                // Space/Enter key can briefly pause for inspection
+                slide.addEventListener('keydown', (e) => {
+                    if (e.key === ' ' || e.key === 'Enter') {
+                        pause();
+                    }
+                });
+                slide.addEventListener('keyup', (e) => {
+                    if (e.key === ' ' || e.key === 'Enter') {
+                        resume();
+                    }
+                });
+            });
+        })();
     </script>
 </body>
 </html>
