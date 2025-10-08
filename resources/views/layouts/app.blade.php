@@ -78,23 +78,73 @@
 
     {{-- Consider moving the full footer here if it's on all pages --}}
     {{-- For now, assuming footer might be unique to welcome page or handled by sections --}}
-     <footer id="newsletter-section-minimal" class="bg-gray-900 py-8 border-t border-gray-800">
+     <footer id="newsletter-section-minimal" class="bg-gray-50 py-12 border-t border-gray-200">
         <div class="container mx-auto px-6">
-            <div class="text-center text-gray-500">
-                <p>&copy; {{ date('Y') }} MHA Plus. All rights reserved.</p>
-                 <div class="flex justify-center space-x-6 mt-4 md:mt-4">
-                    <a href="#" aria-label="Facebook" class="text-gray-500 hover:text-red-500 transition-colors">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" aria-label="X (Twitter)" class="text-gray-500 hover:text-red-500 transition-colors">
-                         <span class="font-semibold">X</span>
-                    </a>
-                    <a href="#" aria-label="Instagram" class="text-gray-500 hover:text-red-500 transition-colors">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" aria-label="LinkedIn" class="text-gray-500 hover:text-red-500 transition-colors">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                {{-- Logo & Description --}}
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="/images/logo-new.png" alt="MHA Plus Logo" class="h-10">
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed">Your complete marketing solution in Erbil, Iraq.</p>
+                </div>
+
+                {{-- Quick Links --}}
+                <div>
+                    <h3 class="text-gray-900 text-sm font-semibold mb-4 flex items-center">
+                        <span class="w-1 h-5 bg-gradient-to-b from-red-600 to-red-900 mr-2 rounded-full"></span>
+                        Quick Links
+                    </h3>
+                    <ul class="space-y-2">
+                        <li><a href="{{ route('home') }}#about" class="text-gray-600 hover:text-red-600 text-sm transition-colors flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                            About Us
+                        </a></li>
+                        <li><a href="{{ route('home') }}#services" class="text-gray-600 hover:text-red-600 text-sm transition-colors flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                            Services
+                        </a></li>
+                        <li><a href="{{ route('portfolio.index') }}" class="text-gray-600 hover:text-red-600 text-sm transition-colors flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                            Portfolio
+                        </a></li>
+                        <li><a href="{{ route('home') }}#contact" class="text-gray-600 hover:text-red-600 text-sm transition-colors flex items-center group">
+                            <i class="fas fa-chevron-right text-xs mr-2 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                            Contact
+                        </a></li>
+                    </ul>
+                </div>
+
+                {{-- Social Media --}}
+                <div>
+                    <h3 class="text-gray-900 text-sm font-semibold mb-4 flex items-center">
+                        <span class="w-1 h-5 bg-gradient-to-b from-red-600 to-red-900 mr-2 rounded-full"></span>
+                        Follow Us
+                    </h3>
+                    <div class="flex space-x-3">
+                        <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:border-red-600 hover:text-red-600 hover:shadow-md transition-all">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" aria-label="X (Twitter)" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:border-red-600 hover:text-red-600 hover:shadow-md transition-all">
+                            <span class="font-semibold text-sm">X</span>
+                        </a>
+                        <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:border-red-600 hover:text-red-600 hover:shadow-md transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:border-red-600 hover:text-red-600 hover:shadow-md transition-all">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-200 pt-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-600 text-sm">&copy; {{ date('Y') }} MHA Plus. All rights reserved.</p>
+                    <div class="flex items-center space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-600 hover:text-red-600 text-sm transition-colors">Privacy Policy</a>
+                        <a href="#" class="text-gray-600 hover:text-red-600 text-sm transition-colors">Terms of Service</a>
+                    </div>
                 </div>
             </div>
         </div>

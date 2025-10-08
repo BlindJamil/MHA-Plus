@@ -585,63 +585,112 @@
     </section>
 
     <!-- FOOTER SECTION -->
-<footer id="newsletter-section" class="bg-gray-900 py-12 border-t border-gray-800">
+<footer id="newsletter-section" class="bg-gray-50 py-16 border-t border-gray-200">
     <div class="container mx-auto px-6">
-        <div class="grid md:grid-cols-4 gap-8">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
             {{-- Column 1: Logo/About --}}
             <div class="col-span-1 md:col-span-1">
                 <div class="flex items-center mb-4">
                     <img src="/images/logo-new.png" alt="MHA Plus Logo" class="h-12">
-                    <span class="ml-3 text-xl font-semibold text-white">MHA <span class="gradient-text">Plus</span></span>
                 </div>
-                <p class="text-gray-400 mb-6">Your complete marketing solution in Erbil, Iraq. We deliver high-quality services tailored to your business needs.</p>
+                <p class="text-gray-600 mb-6 leading-relaxed">Your complete marketing solution in Erbil, Iraq. We deliver high-quality services tailored to your business needs.</p>
+                <div class="flex space-x-4">
+                    <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:border-red-600 hover:text-red-600 hover:shadow-md transition-all">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:border-red-600 hover:text-red-600 hover:shadow-md transition-all">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:border-red-600 hover:text-red-600 hover:shadow-md transition-all">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:border-red-600 hover:text-red-600 hover:shadow-md transition-all">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
             </div>
 
             {{-- Column 2: Quick Links --}}
             <div>
-                <h3 class="text-white text-lg font-semibold mb-4">Quick Links</h3>
-                <ul class="space-y-2">
-                    <li><a href="#about" class="text-gray-400 hover:text-red-500 transition-colors">About Us</a></li>
-                    <li><a href="#services" class="text-gray-400 hover:text-red-500 transition-colors">Services</a></li>
-                    <li><a href="#portfolio" class="text-gray-400 hover:text-red-500 transition-colors">Portfolio</a></li>
-                    <li><a href="#contact" class="text-gray-400 hover:text-red-500 transition-colors">Contact</a></li>
+                <h3 class="text-gray-900 text-lg font-semibold mb-4 flex items-center">
+                    <span class="w-1 h-6 bg-gradient-to-b from-red-600 to-red-900 mr-2 rounded-full"></span>
+                    Quick Links
+                </h3>
+                <ul class="space-y-3">
+                    <li><a href="#about" class="text-gray-600 hover:text-red-600 transition-colors flex items-center group">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                        About Us
+                    </a></li>
+                    <li><a href="#services" class="text-gray-600 hover:text-red-600 transition-colors flex items-center group">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                        Services
+                    </a></li>
+                    <li><a href="#portfolio" class="text-gray-600 hover:text-red-600 transition-colors flex items-center group">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                        Portfolio
+                    </a></li>
+                    <li><a href="#contact" class="text-gray-600 hover:text-red-600 transition-colors flex items-center group">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                        Contact
+                    </a></li>
                 </ul>
             </div>
 
             {{-- Column 3: Our Services --}}
             <div>
-                <h3 class="text-white text-lg font-semibold mb-4">Our Services</h3>
-                <ul class="space-y-2">
-                    <li><a href="#services" class="text-gray-400 hover:text-red-500 transition-colors">Printing & Branding</a></li>
-                    <li><a href="#services" class="text-gray-400 hover:text-red-500 transition-colors">Graphic Design</a></li>
-                    <li><a href="#services" class="text-gray-400 hover:text-red-500 transition-colors">Production & Creative</a></li>
-                    <li><a href="#services" class="text-gray-400 hover:text-red-500 transition-colors">Social Media Management</a></li>
-                    <li><a href="#services" class="text-gray-400 hover:text-red-500 transition-colors">Website Development</a></li>
+                <h3 class="text-gray-900 text-lg font-semibold mb-4 flex items-center">
+                    <span class="w-1 h-6 bg-gradient-to-b from-red-600 to-red-900 mr-2 rounded-full"></span>
+                    Our Services
+                </h3>
+                <ul class="space-y-3">
+                    <li><a href="#services" class="text-gray-600 hover:text-red-600 transition-colors flex items-center group">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                        Printing & Branding
+                    </a></li>
+                    <li><a href="#services" class="text-gray-600 hover:text-red-600 transition-colors flex items-center group">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                        Graphic Design
+                    </a></li>
+                    <li><a href="#services" class="text-gray-600 hover:text-red-600 transition-colors flex items-center group">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                        Production & Creative
+                    </a></li>
+                    <li><a href="#services" class="text-gray-600 hover:text-red-600 transition-colors flex items-center group">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                        Social Media
+                    </a></li>
+                    <li><a href="#services" class="text-gray-600 hover:text-red-600 transition-colors flex items-center group">
+                        <i class="fas fa-chevron-right text-xs mr-2 text-gray-400 group-hover:text-red-600 transition-colors"></i>
+                        Web Development
+                    </a></li>
                 </ul>
             </div>
 
             {{-- Column 4: Newsletter --}}
             <div>
-                <h3 class="text-white text-lg font-semibold mb-4">Newsletter</h3>
-                <p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates and offers.</p>
+                <h3 class="text-gray-900 text-lg font-semibold mb-4 flex items-center">
+                    <span class="w-1 h-6 bg-gradient-to-b from-red-600 to-red-900 mr-2 rounded-full"></span>
+                    Newsletter
+                </h3>
+                <p class="text-gray-600 mb-4 leading-relaxed">Subscribe to our newsletter for the latest updates and offers.</p>
 
                 {{-- Display Success Message --}}
                 @if(session('newsletter_success'))
-                    <div class="mb-4 p-3 rounded-md bg-green-500/20 border border-green-500/30 text-green-400 text-sm">
-                        {{ session('newsletter_success') }}
+                    <div class="mb-4 p-3 rounded-lg bg-green-50 border border-green-200 text-green-700 text-sm">
+                        <i class="fas fa-check-circle mr-2"></i>{{ session('newsletter_success') }}
                     </div>
                 @endif
 
                 {{-- Display General Error Message --}}
                  @if(session('newsletter_error'))
-                    <div class="mb-4 p-3 rounded-md bg-red-500/20 border border-red-500/30 text-red-400 text-sm">
-                        {{ session('newsletter_error') }}
+                    <div class="mb-4 p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm">
+                        <i class="fas fa-exclamation-circle mr-2"></i>{{ session('newsletter_error') }}
                     </div>
                 @endif
 
                 {{-- Display Validation Errors --}}
                 @if(isset($errors) && $errors instanceof ViewErrorBag && $errors->newsletter->any())
-                    <div class="mb-4 p-3 rounded-md bg-red-500/20 border border-red-500/30 text-red-400 text-sm">
+                    <div class="mb-4 p-3 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm">
                         <ul class="list-disc pl-5">
                             @foreach ($errors->newsletter->all() as $error)
                                 <li>{{ $error }}</li>
@@ -660,33 +709,45 @@
                         required
                         value="{{ old('email') }}"
                         aria-label="Email for newsletter"
-                        class="w-full bg-gray-800 border border-gray-700 rounded-l-md py-2 px-4 text-white focus:outline-none focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-colors @error('email', 'newsletter') border-red-500 @enderror"
+                        class="flex-1 bg-white border border-gray-300 rounded-l-lg py-3 px-4 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-all @error('email', 'newsletter') border-red-500 @enderror"
                     >
-                    <button type="submit" aria-label="Subscribe to newsletter" class="bg-gradient-to-r from-red-600 to-red-900 text-white px-4 rounded-r-md hover:opacity-90 transition-opacity shadow-lg">
+                    <button type="submit" aria-label="Subscribe to newsletter" class="bg-gradient-to-r from-red-600 to-red-900 text-white px-6 rounded-r-lg hover:shadow-lg transition-all">
                         <i class="fas fa-paper-plane"></i>
                     </button>
                 </form>
             </div>
         </div>
 
-        <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p class="text-gray-500">&copy; {{ date('Y') }} MHA Plus. All rights reserved.</p>
-            <div class="flex space-x-6 mt-4 md:mt-0">
-                {{-- Social Links --}}
-                <a href="#" aria-label="Facebook" class="text-gray-500 hover:text-red-500 transition-colors">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" aria-label="Twitter" class="text-gray-500 hover:text-red-500 transition-colors">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#" aria-label="Instagram" class="text-gray-500 hover:text-red-500 transition-colors">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#" aria-label="LinkedIn" class="text-gray-500 hover:text-red-500 transition-colors">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
+        <div class="border-t border-gray-200 pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-600 text-sm">&copy; {{ date('Y') }} MHA Plus. All rights reserved.</p>
+                <div class="flex items-center space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-600 hover:text-red-600 text-sm transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-600 hover:text-red-600 text-sm transition-colors">Terms of Service</a>
+                </div>
             </div>
         </div>
+    </div>
+</footer>
+            </div>
+        </div>
+
+                    </div>
+        </div>
+
+        <div class="border-t border-gray-200 pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-600 text-sm">&copy; {{ date('Y') }} MHA Plus. All rights reserved.</p>
+                <div class="flex items-center space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-600 hover:text-red-600 text-sm transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-600 hover:text-red-600 text-sm transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 btn-gradient rounded-full flex items-center justify-center text-white opacity-0 invisible transition-all duration-300 shadow-lg">
     </div>
 </footer>
 
