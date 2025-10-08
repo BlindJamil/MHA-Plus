@@ -28,7 +28,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
             @forelse($projects as $project)
                 <div class="portfolio-item {{ $project->category }}" data-aos="fade-up" data-aos-delay="{{ ($loop->index % 3) * 100 }}">
-                    <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow bg-white">
+                    <div class="project-card group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow bg-white">
                         @if($project->thumbnail)
                             <a href="{{ asset('uploads/' . $project->thumbnail) }}" data-lightbox="portfolio-page-{{ $project->id }}" data-title="{{ $project->title }}">
                                 <img src="{{ asset('uploads/' . $project->thumbnail) }}" alt="{{ $project->title }}" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
@@ -43,29 +43,27 @@
                                 <i class="fas fa-image text-gray-400 text-4xl"></i>
                             </div>
                         @endif
-                        <div class="project-hover-overlay">
+                        <div class="project-overlay">
                             @if($project->category === 'web')
                                 @if($project->is_online)
-                                    <div class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">Online</div>
+                                    <div class="project-status-badge project-status-online">Online</div>
                                 @elseif($project->is_offline)
-                                    <div class="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">Offline</div>
+                                    <div class="project-status-badge project-status-offline">Offline</div>
                                 @else
-                                    <div class="absolute top-4 right-4 bg-purple-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">Template</div>
+                                    <div class="project-status-badge project-status-template">Template</div>
                                 @endif
                             @endif
-                            <h3 class="text-xl font-semibold text-white mb-1">{{ $project->title }}</h3>
-                            <p class="text-gray-200 mb-3 text-sm">{{ Str::limit($project->description, 80) }}</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
+                            <h3>{{ $project->title }}</h3>
+                            <p>{{ Str::limit($project->description, 80) }}</p>
+                            <div class="tech-badges flex flex-wrap gap-2 mb-4">
                                 @if($project->technologies_array && count($project->technologies_array) > 0)
                                     @foreach($project->technologies_array as $tech)
-                                        <span class="text-xs px-3 py-1 bg-red-600/80 text-white rounded-full">{{ $tech }}</span>
+                                        <span class="text-[10px] tracking-wide px-2.5 py-1 rounded-full text-white font-medium">{{ $tech }}</span>
                                     @endforeach
                                 @endif
                             </div>
-                            <div class="flex space-x-3">
-                                <a href="{{ route('projects.show', $project->id) }}" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors text-sm shadow-md">
-                                    View Details
-                                </a>
+                            <div>
+                                <a href="{{ route('projects.show', $project->id) }}" class="action-btn inline-block">View Details</a>
                             </div>
                         </div>
                     </div>

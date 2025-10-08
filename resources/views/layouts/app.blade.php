@@ -37,11 +37,21 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
         }
-        /* Explicit project hover overlay utility - ensures presence regardless of purge */
-        .project-hover-overlay { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:1.5rem; background:linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 45%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.30) 85%, rgba(0,0,0,0.10) 100%); opacity:0; transition:opacity .35s ease; }
-        .group:hover > .project-hover-overlay { opacity:1; }
-        .project-hover-overlay h3 { text-shadow:0 2px 4px rgba(0,0,0,.6); }
-        .project-hover-overlay p { text-shadow:0 1px 3px rgba(0,0,0,.55); }
+    /* Professional project card overlay system */
+    .project-card { position:relative; overflow:hidden; }
+    .project-card img { transition: transform .9s cubic-bezier(.19,1,.22,1); }
+    .project-card:hover img { transform:scale(1.08); }
+    .project-overlay { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:1.5rem; background:linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.15) 85%, rgba(0,0,0,0.05) 100%); opacity:0; backdrop-filter:saturate(120%) brightness(0.95); transition:opacity .4s ease; }
+    .project-card:hover .project-overlay { opacity:1; }
+    .project-overlay h3 { color:#fff; margin-bottom:.25rem; text-shadow:0 3px 8px rgba(0,0,0,.55); }
+    .project-overlay p { color:rgba(255,255,255,.85); font-size:.80rem; line-height:1.25rem; margin-bottom:.75rem; max-width:90%; text-shadow:0 2px 6px rgba(0,0,0,.45); }
+    .project-overlay .tech-badges span { background:rgba(255,255,255,.12); backdrop-filter:blur(2px); border:1px solid rgba(255,255,255,.18); }
+    .project-overlay .action-btn { background:linear-gradient(90deg,#E02020,#8B0000); color:#fff; padding:.5rem 1rem; font-size:.70rem; line-height:1; border-radius:.375rem; font-weight:500; box-shadow:0 4px 12px -2px rgba(0,0,0,.4),0 2px 4px -1px rgba(0,0,0,.25); transition:background .3s ease, transform .3s ease; }
+    .project-overlay .action-btn:hover { transform:translateY(-2px); }
+    .project-status-badge { position:absolute; top:.75rem; right:.75rem; font-size:.625rem; text-transform:uppercase; letter-spacing:.5px; padding:.35rem .55rem; border-radius:9999px; font-weight:600; box-shadow:0 2px 6px rgba(0,0,0,.35); }
+    .project-status-online { background:#16a34a; color:#fff; }
+    .project-status-offline { background:#d97706; color:#fff; }
+    .project-status-template { background:#7e22ce; color:#fff; }
     </style>
     @stack('styles')
 </head>
