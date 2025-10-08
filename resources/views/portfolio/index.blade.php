@@ -106,12 +106,14 @@ document.addEventListener('DOMContentLoaded', function () {
     if (filterButtonsPortfolioPage.length > 0 && portfolioItemsPortfolioPage.length > 0) {
         filterButtonsPortfolioPage.forEach(button => {
             button.addEventListener('click', () => {
+                // Remove active state from all buttons
                 filterButtonsPortfolioPage.forEach(btn => {
-                    btn.classList.remove('active', 'border-red-600', 'text-white', 'bg-red-600', 'border-2');
+                    btn.classList.remove('active', 'border-red-600', 'text-red-600', 'text-white', 'bg-red-600', 'border-2');
                     btn.classList.add('border', 'border-gray-300', 'text-gray-700', 'bg-white');
                 });
 
-                button.classList.add('active', 'border-red-600', 'text-red-600', 'border-2');
+                // Add active state to clicked button
+                button.classList.add('active', 'border-red-600', 'text-red-600', 'bg-white', 'border-2');
                 button.classList.remove('border', 'border-gray-300', 'text-gray-700');
 
                 const filter = button.getAttribute('data-filter');

@@ -734,12 +734,12 @@
                 button.addEventListener('click', () => {
                     // Remove active class from all buttons
                     filterButtons.forEach(btn => {
-                        btn.classList.remove('active', 'border-red-600', 'text-white', 'bg-red-600', 'border-2');
+                        btn.classList.remove('active', 'border-red-600', 'text-red-600', 'text-white', 'bg-red-600', 'border-2');
                         btn.classList.add('border', 'border-gray-300', 'text-gray-700', 'bg-white');
                     });
 
                     // Add active class to clicked button
-                    button.classList.add('active', 'border-red-600', 'text-red-600', 'border-2');
+                    button.classList.add('active', 'border-red-600', 'text-red-600', 'bg-white', 'border-2');
                     button.classList.remove('border', 'border-gray-300', 'text-gray-700');
 
                     const filter = button.getAttribute('data-filter');
