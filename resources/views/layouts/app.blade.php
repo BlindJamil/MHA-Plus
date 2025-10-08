@@ -23,16 +23,16 @@
              scroll-behavior: smooth;
         }
         .gradient-text {
-            background: linear-gradient(90deg, #2b8a98, #0f5e8d);
+            background: linear-gradient(90deg, #E02020, #8B0000);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             color: transparent;
         }
         .btn-gradient {
-            background: linear-gradient(90deg, #2b8a98, #0f5e8d);
+            background: linear-gradient(90deg, #E02020, #8B0000);
         }
-         .fab.fa-twitter:before { /* From welcome.blade.php styles */
+         .fab.fa-twitter:before {
             content: "𝕏";
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
@@ -40,35 +40,35 @@
     </style>
     @stack('styles')
 </head>
-<body class="bg-gray-900 text-gray-300 antialiased">
+<body class="bg-white text-gray-900 antialiased">
 
-    <header class="fixed w-full z-50 bg-gray-900/80 backdrop-blur-md">
+    <header class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
             <a href="{{ route('home') }}#home" class="flex items-center">
-                <img src="/images/logo.png" alt="MHA Plus Logo" class="h-10">
-                <span class="ml-3 text-xl font-semibold text-white hidden sm:inline-block">MHA <span class="gradient-text">Plus</span></span>
+                <img src="/images/logo-new.png" alt="MHA Plus Logo" class="h-12">
+                <span class="ml-3 text-xl font-semibold text-gray-900 hidden sm:inline-block">MHA <span class="gradient-text">Plus</span></span>
             </a>
     
             <div class="hidden md:flex items-center space-x-8">
-                <a href="{{ route('home') }}#home" class="text-gray-300 hover:text-white transition-colors">Home</a>
-                <a href="{{ route('home') }}#about" class="text-gray-300 hover:text-white transition-colors">About</a>
-                <a href="{{ route('home') }}#services" class="text-gray-300 hover:text-white transition-colors">Services</a>
-                <a href="{{ route('portfolio.index') }}" class="text-gray-300 hover:text-white transition-colors {{ request()->routeIs('portfolio.index') ? 'text-teal-400 font-semibold' : '' }}">Portfolio</a>
-                <a href="{{ route('home') }}#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+                <a href="{{ route('home') }}#home" class="text-gray-700 hover:text-red-600 transition-colors font-medium">Home</a>
+                <a href="{{ route('home') }}#about" class="text-gray-700 hover:text-red-600 transition-colors font-medium">About</a>
+                <a href="{{ route('home') }}#services" class="text-gray-700 hover:text-red-600 transition-colors font-medium">Services</a>
+                <a href="{{ route('portfolio.index') }}" class="text-gray-700 hover:text-red-600 transition-colors font-medium {{ request()->routeIs('portfolio.index') ? 'text-red-600 font-semibold' : '' }}">Portfolio</a>
+                <a href="{{ route('home') }}#contact" class="text-gray-700 hover:text-red-600 transition-colors font-medium">Contact</a>
             </div>
     
             <div class="md:hidden">
-                <button id="menu-toggle-layout" class="text-gray-300 hover:text-white focus:outline-none" aria-label="Toggle mobile menu">
+                <button id="menu-toggle-layout" class="text-gray-900 hover:text-red-600 focus:outline-none" aria-label="Toggle mobile menu">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
             </div>
         </nav>
-        <div class="hidden bg-gray-800 md:hidden py-4 px-6" id="mobile-menu-layout">
-            <a href="{{ route('home') }}#home" class="block py-2 text-gray-300 hover:text-white transition-colors mobile-nav-link">Home</a>
-            <a href="{{ route('home') }}#about" class="block py-2 text-gray-300 hover:text-white transition-colors mobile-nav-link">About</a>
-            <a href="{{ route('home') }}#services" class="block py-2 text-gray-300 hover:text-white transition-colors mobile-nav-link">Services</a>
-            <a href="{{ route('portfolio.index') }}" class="block py-2 text-gray-300 hover:text-white transition-colors mobile-nav-link {{ request()->routeIs('portfolio.index') ? 'text-teal-400' : '' }}">Portfolio</a>
-            <a href="{{ route('home') }}#contact" class="block py-2 text-gray-300 hover:text-white transition-colors mobile-nav-link">Contact</a>
+        <div class="hidden bg-white md:hidden py-4 px-6 shadow-lg" id="mobile-menu-layout">
+            <a href="{{ route('home') }}#home" class="block py-2 text-gray-700 hover:text-red-600 transition-colors font-medium mobile-nav-link">Home</a>
+            <a href="{{ route('home') }}#about" class="block py-2 text-gray-700 hover:text-red-600 transition-colors font-medium mobile-nav-link">About</a>
+            <a href="{{ route('home') }}#services" class="block py-2 text-gray-700 hover:text-red-600 transition-colors font-medium mobile-nav-link">Services</a>
+            <a href="{{ route('portfolio.index') }}" class="block py-2 text-gray-700 hover:text-red-600 transition-colors font-medium mobile-nav-link {{ request()->routeIs('portfolio.index') ? 'text-red-600' : '' }}">Portfolio</a>
+            <a href="{{ route('home') }}#contact" class="block py-2 text-gray-700 hover:text-red-600 transition-colors font-medium mobile-nav-link">Contact</a>
         </div>
     </header>
 
@@ -78,21 +78,21 @@
 
     {{-- Consider moving the full footer here if it's on all pages --}}
     {{-- For now, assuming footer might be unique to welcome page or handled by sections --}}
-     <footer id="newsletter-section-minimal" class="bg-gray-800 py-8 border-t border-gray-700">
+     <footer id="newsletter-section-minimal" class="bg-gray-900 py-8 border-t border-gray-800">
         <div class="container mx-auto px-6">
             <div class="text-center text-gray-500">
                 <p>&copy; {{ date('Y') }} MHA Plus. All rights reserved.</p>
                  <div class="flex justify-center space-x-6 mt-4 md:mt-4">
-                    <a href="#" aria-label="Facebook" class="text-gray-500 hover:text-white transition-colors">
+                    <a href="#" aria-label="Facebook" class="text-gray-500 hover:text-red-500 transition-colors">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="#" aria-label="X (Twitter)" class="text-gray-500 hover:text-white transition-colors">
+                    <a href="#" aria-label="X (Twitter)" class="text-gray-500 hover:text-red-500 transition-colors">
                          <span class="font-semibold">X</span>
                     </a>
-                    <a href="#" aria-label="Instagram" class="text-gray-500 hover:text-white transition-colors">
+                    <a href="#" aria-label="Instagram" class="text-gray-500 hover:text-red-500 transition-colors">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="#" aria-label="LinkedIn" class="text-gray-500 hover:text-white transition-colors">
+                    <a href="#" aria-label="LinkedIn" class="text-gray-500 hover:text-red-500 transition-colors">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
@@ -100,7 +100,7 @@
         </div>
     </footer>
 
-    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 btn-gradient rounded-full flex items-center justify-center text-white opacity-0 invisible transition-all duration-300 z-50">
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 btn-gradient rounded-full flex items-center justify-center text-white opacity-0 invisible transition-all duration-300 z-50 shadow-lg">
         <i class="fas fa-arrow-up"></i>
     </button>
 
