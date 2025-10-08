@@ -27,20 +27,21 @@
             font-family: 'Poppins', sans-serif;
         }
         .gradient-text {
-            background: linear-gradient(90deg, #2b8a98, #0f5e8d);
+            background: linear-gradient(90deg, #E02020, #8B0000);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text; /* Standard property */
             color: transparent; /* Fallback */
         }
         .btn-gradient {
-            background: linear-gradient(90deg, #2b8a98, #0f5e8d);
+            background: linear-gradient(90deg, #E02020, #8B0000);
         }
         .border-gradient {
-            border-image: linear-gradient(to right, #2b8a98, #0f5e8d) 1;
+            border-image: linear-gradient(to right, #E02020, #8B0000) 1;
         }
         .hero-gradient {
-            background: linear-gradient(to right, rgba(10, 15, 23, 0.9), rgba(17, 24, 39, 0.7)), url('/images/hero-bg.jpg');
+            background: linear-gradient(135deg, rgba(224, 32, 32, 0.05), rgba(250, 250, 250, 0.95)), 
+                        linear-gradient(to bottom right, #ffffff, #fafafa);
             background-size: cover;
             background-position: center;
         }
@@ -58,18 +59,17 @@
         /* --- Logo Slider Styles --- */
         .logo-slider {
             overflow: hidden;
-            padding: 40px 0; /* Increased padding */
-            background: #1f2937; /* bg-gray-800 */
+            padding: 40px 0;
+            background: #FAFAFA;
             white-space: nowrap;
             position: relative;
         }
 
         .logo-slider::before,
         .logo-slider::after {
-            /* Fade effect at edges */
             position: absolute;
             top: 0;
-            width: 150px; /* Width of the fade */
+            width: 150px;
             height: 100%;
             content: "";
             z-index: 2;
@@ -77,12 +77,12 @@
 
         .logo-slider::before {
             left: 0;
-            background: linear-gradient(to left, rgba(31, 41, 55, 0), #1f2937); /* Fade from transparent to bg-gray-800 */
+            background: linear-gradient(to left, rgba(250, 250, 250, 0), #FAFAFA);
         }
 
         .logo-slider::after {
             right: 0;
-            background: linear-gradient(to right, rgba(31, 41, 55, 0), #1f2937); /* Fade from transparent to bg-gray-800 */
+            background: linear-gradient(to right, rgba(250, 250, 250, 0), #FAFAFA);
         }
 
         .logo-slider-track {
@@ -133,149 +133,149 @@
 
     </style>
 </head>
-<body class="bg-gray-900 text-gray-300">
-    <header class="fixed w-full z-50 bg-gray-900/80 backdrop-blur-md">
+<body class="bg-white text-gray-900">
+    <header class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
             <a href="#home" class="flex items-center">
-                <img src="/images/logo.png" alt="MHA Plus Logo" class="h-10">
-                <span class="ml-3 text-xl font-semibold text-white hidden sm:inline-block">MHA <span class="gradient-text">Plus</span></span>
+                <img src="/images/logo-new.png" alt="MHA Plus Logo" class="h-12">
+                <span class="ml-3 text-xl font-semibold text-gray-900 hidden sm:inline-block">MHA <span class="gradient-text">Plus</span></span>
             </a>
     
             <div class="hidden md:flex items-center space-x-8">
-                <a href="#home" class="text-gray-300 hover:text-white transition-colors">Home</a>
-                <a href="#about" class="text-gray-300 hover:text-white transition-colors">About</a>
-                <a href="#services" class="text-gray-300 hover:text-white transition-colors">Services</a>
-                <a href="#portfolio" class="text-gray-300 hover:text-white transition-colors">Portfolio</a>
-                <a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+                <a href="#home" class="text-gray-700 hover:text-red-600 transition-colors font-medium">Home</a>
+                <a href="#about" class="text-gray-700 hover:text-red-600 transition-colors font-medium">About</a>
+                <a href="#services" class="text-gray-700 hover:text-red-600 transition-colors font-medium">Services</a>
+                <a href="#portfolio" class="text-gray-700 hover:text-red-600 transition-colors font-medium">Portfolio</a>
+                <a href="#contact" class="text-gray-700 hover:text-red-600 transition-colors font-medium">Contact</a>
             </div>
     
             <div class="md:hidden">
-                <button id="menu-toggle" class="text-gray-300 hover:text-white focus:outline-none" aria-label="Toggle mobile menu">
+                <button id="menu-toggle" class="text-gray-900 hover:text-red-600 focus:outline-none" aria-label="Toggle mobile menu">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
             </div>
         </nav>
-        <div class="hidden bg-gray-800 md:hidden py-4 px-6" id="mobile-menu">
-            <a href="#home" class="block py-2 text-gray-300 hover:text-white transition-colors">Home</a>
-            <a href="#about" class="block py-2 text-gray-300 hover:text-white transition-colors">About</a>
-            <a href="#services" class="block py-2 text-gray-300 hover:text-white transition-colors">Services</a>
-            <a href="#portfolio" class="block py-2 text-gray-300 hover:text-white transition-colors">Portfolio</a>
-            <a href="#contact" class="block py-2 text-gray-300 hover:text-white transition-colors">Contact</a>
+        <div class="hidden bg-white md:hidden py-4 px-6 shadow-lg" id="mobile-menu">
+            <a href="#home" class="block py-2 text-gray-700 hover:text-red-600 transition-colors font-medium">Home</a>
+            <a href="#about" class="block py-2 text-gray-700 hover:text-red-600 transition-colors font-medium">About</a>
+            <a href="#services" class="block py-2 text-gray-700 hover:text-red-600 transition-colors font-medium">Services</a>
+            <a href="#portfolio" class="block py-2 text-gray-700 hover:text-red-600 transition-colors font-medium">Portfolio</a>
+            <a href="#contact" class="block py-2 text-gray-700 hover:text-red-600 transition-colors font-medium">Contact</a>
         </div>
     </header>
 
     <section id="home" class="hero-gradient min-h-screen flex items-center pt-20">
         <div class="container mx-auto px-6 py-24">
             <div class="max-w-4xl" data-aos="fade-up" data-aos-delay="100">
-                <h1 class="text-5xl md:text-6xl font-bold mb-6 text-white">Your Complete Marketing Solution in <span class="gradient-text">Erbil, Iraq</span></h1>
-                <p class="text-xl md:text-2xl mb-8 text-gray-300">We offer comprehensive services from printing and branding to social media management and website development.</p>
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 text-gray-900">Your Complete Marketing Solution in <span class="gradient-text">Erbil, Iraq</span></h1>
+                <p class="text-xl md:text-2xl mb-8 text-gray-700">We offer comprehensive services from printing and branding to social media management and website development.</p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#services" class="px-8 py-3 btn-gradient text-white font-medium rounded-md hover:opacity-90 transition-opacity inline-block text-center">Our Services</a>
-                    <a href="#portfolio" class="px-8 py-3 border border-gray-600 text-white font-medium rounded-md hover:border-teal-500 transition-colors inline-block text-center">View Portfolio</a>
+                    <a href="#services" class="px-8 py-3 btn-gradient text-white font-medium rounded-md hover:opacity-90 transition-opacity inline-block text-center shadow-lg">Our Services</a>
+                    <a href="#portfolio" class="px-8 py-3 border-2 border-red-600 text-red-600 font-medium rounded-md hover:bg-red-600 hover:text-white transition-colors inline-block text-center">View Portfolio</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-16 bg-gray-800">
+    <section id="about" class="py-16 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12" data-aos="fade-up">
                 <h2 class="text-4xl font-bold mb-4 gradient-text inline-block">About Us</h2>
-                <div class="h-1 w-24 bg-gradient-to-r from-teal-500 to-blue-600 mx-auto"></div>
+                <div class="h-1 w-24 bg-gradient-to-r from-red-600 to-red-900 mx-auto"></div>
             </div>
 
             <div class="grid md:grid-cols-3 gap-10">
-                <div class="bg-gray-900 p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 btn-gradient rounded-full flex items-center justify-center mb-6">
+                <div class="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 btn-gradient rounded-full flex items-center justify-center mb-6 shadow-lg">
                         <i class="fas fa-handshake text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-white">Professional Excellence</h3>
-                    <p class="text-gray-400">We deliver high-quality marketing solutions tailored to your needs.</p>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Professional Excellence</h3>
+                    <p class="text-gray-600">We deliver high-quality marketing solutions tailored to your needs.</p>
                 </div>
 
-                <div class="bg-gray-900 p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 btn-gradient rounded-full flex items-center justify-center mb-6">
+                <div class="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 btn-gradient rounded-full flex items-center justify-center mb-6 shadow-lg">
                         <i class="fas fa-lightbulb text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-white">Creative Approach</h3>
-                    <p class="text-gray-400">Our team combines innovation with strategic thinking.</p>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Creative Approach</h3>
+                    <p class="text-gray-600">Our team combines innovation with strategic thinking.</p>
                 </div>
 
-                <div class="bg-gray-900 p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-16 h-16 btn-gradient rounded-full flex items-center justify-center mb-6">
+                <div class="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 btn-gradient rounded-full flex items-center justify-center mb-6 shadow-lg">
                         <i class="fas fa-map-marker-alt text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-4 text-white">Local Expertise</h3>
-                    <p class="text-gray-400">Based in Erbil, we understand the regional market dynamics.</p>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-900">Local Expertise</h3>
+                    <p class="text-gray-600">Based in Erbil, we understand the regional market dynamics.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="py-16 bg-gray-900">
+    <section id="services" class="py-16 bg-gray-50">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12" data-aos="fade-up">
                 <h2 class="text-4xl font-bold mb-4 gradient-text inline-block">Our Services</h2>
-                <div class="h-1 w-24 bg-gradient-to-r from-teal-500 to-blue-600 mx-auto"></div>
+                <div class="h-1 w-24 bg-gradient-to-r from-red-600 to-red-900 mx-auto"></div>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-800/80 transition-all" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-14 h-14 btn-gradient rounded-lg flex items-center justify-center mb-6">
+                <div class="bg-white rounded-lg p-6 hover:shadow-xl transition-shadow border border-gray-200" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 btn-gradient rounded-lg flex items-center justify-center mb-6 shadow-md">
                         <i class="fas fa-print text-white text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3 text-white">Printing & Branding</h3>
-                    <p class="text-gray-400">Event branding, banners, flags, signs, brochures, flyers, and more.</p>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Printing & Branding</h3>
+                    <p class="text-gray-600">Event branding, banners, flags, signs, brochures, flyers, and more.</p>
                 </div>
 
-                <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-800/80 transition-all" data-aos="fade-up" data-aos-delay="150">
-                    <div class="w-14 h-14 btn-gradient rounded-lg flex items-center justify-center mb-6">
+                <div class="bg-white rounded-lg p-6 hover:shadow-xl transition-shadow border border-gray-200" data-aos="fade-up" data-aos-delay="150">
+                    <div class="w-14 h-14 btn-gradient rounded-lg flex items-center justify-center mb-6 shadow-md">
                         <i class="fas fa-palette text-white text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3 text-white">Graphic Design</h3>
-                    <p class="text-gray-400">Logo creation, visual identity, and promotional materials for print and digital.</p>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Graphic Design</h3>
+                    <p class="text-gray-600">Logo creation, visual identity, and promotional materials for print and digital.</p>
                 </div>
 
-                <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-800/80 transition-all" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-14 h-14 btn-gradient rounded-lg flex items-center justify-center mb-6">
+                <div class="bg-white rounded-lg p-6 hover:shadow-xl transition-shadow border border-gray-200" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 btn-gradient rounded-lg flex items-center justify-center mb-6 shadow-md">
                         <i class="fas fa-video text-white text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3 text-white">Production & Creative</h3>
-                    <p class="text-gray-400">Video production, live streaming, photography, and audio production services.</p>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Production & Creative</h3>
+                    <p class="text-gray-600">Video production, live streaming, photography, and audio production services.</p>
                 </div>
 
-                <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-800/80 transition-all" data-aos="fade-up" data-aos-delay="250">
-                    <div class="w-14 h-14 btn-gradient rounded-lg flex items-center justify-center mb-6">
+                <div class="bg-white rounded-lg p-6 hover:shadow-xl transition-shadow border border-gray-200" data-aos="fade-up" data-aos-delay="250">
+                    <div class="w-14 h-14 btn-gradient rounded-lg flex items-center justify-center mb-6 shadow-md">
                         <i class="fas fa-share-alt text-white text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3 text-white">Social Media</h3>
-                    <p class="text-gray-400">Content creation, performance tracking, audience engagement, and scheduling.</p>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Social Media</h3>
+                    <p class="text-gray-600">Content creation, performance tracking, audience engagement, and scheduling.</p>
                 </div>
 
-                <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-800/80 transition-all" data-aos="fade-up" data-aos-delay="300">
-                    <div class="w-14 h-14 btn-gradient rounded-lg flex items-center justify-center mb-6">
+                <div class="bg-white rounded-lg p-6 hover:shadow-xl transition-shadow border border-gray-200" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 btn-gradient rounded-lg flex items-center justify-center mb-6 shadow-md">
                         <i class="fas fa-chart-line text-white text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3 text-white">Business Promotion</h3>
-                    <p class="text-gray-400">Market research, brand positioning, and comprehensive marketing campaigns.</p>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Business Promotion</h3>
+                    <p class="text-gray-600">Market research, brand positioning, and comprehensive marketing campaigns.</p>
                 </div>
 
-                <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-800/80 transition-all" data-aos="fade-up" data-aos-delay="350">
-                    <div class="w-14 h-14 btn-gradient rounded-lg flex items-center justify-center mb-6">
+                <div class="bg-white rounded-lg p-6 hover:shadow-xl transition-shadow border border-gray-200" data-aos="fade-up" data-aos-delay="350">
+                    <div class="w-14 h-14 btn-gradient rounded-lg flex items-center justify-center mb-6 shadow-md">
                         <i class="fas fa-laptop-code text-white text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3 text-white">Website Development</h3>
-                    <p class="text-gray-400">Design, development, hosting, and maintenance of responsive websites.</p>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-900">Website Development</h3>
+                    <p class="text-gray-600">Design, development, hosting, and maintenance of responsive websites.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="clients" class="py-16 bg-gray-800">
+    <section id="clients" class="py-16 bg-white border-t border-gray-200">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12" data-aos="fade-up">
-                <h2 class="text-3xl font-semibold mb-4 text-white">Trusted By</h2>
-                <div class="h-1 w-20 bg-gradient-to-r from-teal-500 to-blue-600 mx-auto"></div>
+                <h2 class="text-3xl font-semibold mb-4 text-gray-900">Trusted By</h2>
+                <div class="h-1 w-20 bg-gradient-to-r from-red-600 to-red-900 mx-auto"></div>
             </div>
         </div>
         {{-- The container mx-auto is removed from the slider itself to allow edge-to-edge fading --}}
@@ -388,27 +388,27 @@
     {{-- resources/views/welcome.blade.php --}}
 {{-- ... other sections ... --}}
 
-<section id="portfolio" class="py-20 bg-gray-900">
+<section id="portfolio" class="py-20 bg-gray-50">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16" data-aos="fade-up">
             <h2 class="text-4xl font-bold mb-4 gradient-text inline-block">Our Portfolio</h2>
-            <div class="h-1 w-24 bg-gradient-to-r from-teal-500 to-blue-600 mx-auto"></div>
-            <p class="text-gray-400 mt-6 max-w-2xl mx-auto">Explore our recent projects across various industries and service categories.</p>
+            <div class="h-1 w-24 bg-gradient-to-r from-red-600 to-red-900 mx-auto"></div>
+            <p class="text-gray-600 mt-6 max-w-2xl mx-auto">Explore our recent projects across various industries and service categories.</p>
         </div>
 
         <div class="flex flex-wrap justify-center gap-4 mb-10" data-aos="fade-up">
-            <button class="portfolio-filter active px-6 py-2 rounded-md bg-gray-800 border border-teal-500 text-white hover:bg-teal-500/10 transition-colors" data-filter="all">All Projects</button>
-            <button class="portfolio-filter px-6 py-2 rounded-md bg-gray-800 border border-gray-700 text-gray-300 hover:border-teal-500 hover:text-white transition-colors" data-filter="web">Web Development</button>
-            <button class="portfolio-filter px-6 py-2 rounded-md bg-gray-800 border border-gray-700 text-gray-300 hover:border-teal-500 hover:text-white transition-colors" data-filter="branding">Branding</button>
-            <button class="portfolio-filter px-6 py-2 rounded-md bg-gray-800 border border-gray-700 text-gray-300 hover:border-teal-500 hover:text-white transition-colors" data-filter="design">Graphic Design</button>
-            <button class="portfolio-filter px-6 py-2 rounded-md bg-gray-800 border border-gray-700 text-gray-300 hover:border-teal-500 hover:text-white transition-colors" data-filter="production">Production</button>
+            <button class="portfolio-filter active px-6 py-2 rounded-md bg-white border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition-colors shadow-sm" data-filter="all">All Projects</button>
+            <button class="portfolio-filter px-6 py-2 rounded-md bg-white border border-gray-300 text-gray-700 hover:border-red-600 hover:text-red-600 transition-colors shadow-sm" data-filter="web">Web Development</button>
+            <button class="portfolio-filter px-6 py-2 rounded-md bg-white border border-gray-300 text-gray-700 hover:border-red-600 hover:text-red-600 transition-colors shadow-sm" data-filter="branding">Branding</button>
+            <button class="portfolio-filter px-6 py-2 rounded-md bg-white border border-gray-300 text-gray-700 hover:border-red-600 hover:text-red-600 transition-colors shadow-sm" data-filter="design">Graphic Design</button>
+            <button class="portfolio-filter px-6 py-2 rounded-md bg-white border border-gray-300 text-gray-700 hover:border-red-600 hover:text-red-600 transition-colors shadow-sm" data-filter="production">Production</button>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
             @if(isset($projects) && $projects->count() > 0)
                 @foreach($projects as $project) {{-- $projects now contains max 6 items --}}
                     <div class="portfolio-item {{ $project->category }}" data-aos="fade-up" data-aos-delay="{{ ($loop->index % 3) * 100 }}">
-                        <div class="group relative overflow-hidden rounded-lg shadow-lg bg-gray-800">
+                        <div class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow bg-white">
                             @if($project->thumbnail)
                                 <a href="{{ asset('uploads/' . $project->thumbnail) }}" data-lightbox="portfolio-home-{{ $project->id }}" data-title="{{ $project->title }}">
                                     <img src="{{ asset('uploads/' . $project->thumbnail) }}" alt="{{ $project->title }}" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
@@ -419,31 +419,31 @@
                                     @endforeach
                                 @endif
                             @else
-                                <div class="w-full h-64 bg-gray-700 flex items-center justify-center">
-                                    <i class="fas fa-image text-gray-500 text-4xl"></i>
+                                <div class="w-full h-64 bg-gray-100 flex items-center justify-center">
+                                    <i class="fas fa-image text-gray-400 text-4xl"></i>
                                 </div>
                             @endif
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-800 via-gray-800/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                                 @if($project->category === 'web')
                                     @if($project->is_online)
-                                        <div class="absolute top-4 right-4 bg-green-500/90 text-white px-2 py-1 rounded text-xs">Online</div>
+                                        <div class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">Online</div>
                                     @elseif($project->is_offline)
-                                        <div class="absolute top-4 right-4 bg-amber-500/90 text-white px-2 py-1 rounded text-xs">Offline</div>
+                                        <div class="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">Offline</div>
                                     @else
-                                        <div class="absolute top-4 right-4 bg-purple-500/90 text-white px-2 py-1 rounded text-xs">Template</div>
+                                        <div class="absolute top-4 right-4 bg-purple-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">Template</div>
                                     @endif
                                 @endif
                                 <h3 class="text-xl font-semibold text-white mb-1">{{ $project->title }}</h3>
-                                <p class="text-gray-300 mb-3 text-sm">{{ Str::limit($project->description, 80) }}</p>
+                                <p class="text-gray-200 mb-3 text-sm">{{ Str::limit($project->description, 80) }}</p>
                                 <div class="flex flex-wrap gap-2 mb-4">
                                     @if($project->technologies_array && count($project->technologies_array) > 0)
                                         @foreach($project->technologies_array as $tech)
-                                            <span class="text-xs px-3 py-1 bg-teal-500/20 text-teal-400 rounded-full">{{ $tech }}</span>
+                                            <span class="text-xs px-3 py-1 bg-red-600/80 text-white rounded-full">{{ $tech }}</span>
                                         @endforeach
                                     @endif
                                 </div>
                                 <div class="flex space-x-3">
-                                    <a href="{{ route('projects.show', $project->id) }}" class="px-4 py-2 bg-teal-500/20 text-teal-400 rounded-md hover:bg-teal-500/30 transition-colors text-sm">
+                                    <a href="{{ route('projects.show', $project->id) }}" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors text-sm shadow-md">
                                         View Details
                                     </a>
                                 </div>
@@ -452,14 +452,14 @@
                     </div>
                 @endforeach
              @else
-                 <p class="text-center col-span-full text-gray-400">No projects to display at the moment. Check back soon!</p>
+                 <p class="text-center col-span-full text-gray-600">No projects to display at the moment. Check back soon!</p>
              @endif
         </div>
 
         {{-- "See More Projects" Button --}}
         @if(isset($totalProjects) && $totalProjects > 6)
         <div class="text-center mt-12" data-aos="fade-up">
-            <a href="{{ route('portfolio.index') }}" class="px-8 py-3 btn-gradient text-white font-medium rounded-md hover:opacity-90 transition-opacity inline-block">
+            <a href="{{ route('portfolio.index') }}" class="px-8 py-3 btn-gradient text-white font-medium rounded-md hover:opacity-90 transition-opacity inline-block shadow-lg">
                 See More Projects <i class="fas fa-arrow-right ml-2"></i>
             </a>
         </div>
@@ -469,60 +469,59 @@
 
 {{-- ... other sections ... --}}
 
-    <section id="contact" class="py-20 bg-gray-900">
+    <section id="contact" class="py-20 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-4xl font-bold mb-4 gradient-text inline-block">Get In Touch</h2>
-                <div class="h-1 w-24 bg-gradient-to-r from-teal-500 to-blue-600 mx-auto"></div>
-                <p class="text-gray-400 mt-6 max-w-2xl mx-auto">Ready to elevate your marketing strategy? Contact us to discuss how we can help your business grow.</p>
+                <div class="h-1 w-24 bg-gradient-to-r from-red-600 to-red-900 mx-auto"></div>
+                <p class="text-gray-600 mt-6 max-w-2xl mx-auto">Ready to elevate your marketing strategy? Contact us to discuss how we can help your business grow.</p>
             </div>
 
             <div class="grid md:grid-cols-2 gap-12">
                 <div class="space-y-8" data-aos="fade-up" data-aos-delay="100">
                      <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 btn-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+                        <div class="w-12 h-12 btn-gradient rounded-lg flex items-center justify-center flex-shrink-0 shadow-md">
                             <i class="fas fa-map-marker-alt text-white"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-semibold text-white mb-2">Our Location</h3>
-                            <p class="text-gray-400">Erbil, Kurdistan Region, Iraq</p>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Our Location</h3>
+                            <p class="text-gray-600">Erbil, Kurdistan Region, Iraq</p>
                         </div>
                     </div>
 
                     <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 btn-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+                        <div class="w-12 h-12 btn-gradient rounded-lg flex items-center justify-center flex-shrink-0 shadow-md">
                             <i class="fas fa-envelope text-white"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-semibold text-white mb-2">Email Us</h3>
-                            <p class="text-gray-400"><a href="mailto:mhagroup@gmail.com" class="hover:text-teal-400">mhagroup@gmail.com</a></p>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Email Us</h3>
+                            <p class="text-gray-600"><a href="mailto:mhagroup@gmail.com" class="hover:text-red-600 transition-colors">mhagroup@gmail.com</a></p>
                         </div>
                     </div>
 
                     <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 btn-gradient rounded-lg flex items-center justify-center flex-shrink-0">
+                        <div class="w-12 h-12 btn-gradient rounded-lg flex items-center justify-center flex-shrink-0 shadow-md">
                             <i class="fas fa-phone-alt text-white"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-semibold text-white mb-2">Call Us</h3>
-                            <p class="text-gray-400"><a href="tel:+964XXXXXXXXXX" class="hover:text-teal-400">+964 750 651 1045</a></p> {{-- Replace with actual number --}}
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Call Us</h3>
+                            <p class="text-gray-600"><a href="tel:+964XXXXXXXXXX" class="hover:text-red-600 transition-colors">+964 750 651 1045</a></p>
                         </div>
                     </div>
 
                     <div>
-                        <h3 class="text-xl font-semibold text-white mb-4">Follow Us</h3>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Follow Us</h3>
                         <div class="flex space-x-4">
-                          <a href="#" aria-label="Facebook" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-teal-500/20 transition-colors">
+                          <a href="#" aria-label="Facebook" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-700 hover:bg-red-600 hover:text-white transition-colors shadow-sm">
                             <i class="fab fa-facebook-f"></i>
                           </a>
-                          <a href="#" aria-label="X (Twitter)" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-teal-500/20 transition-colors">
-                            <!-- Using X character directly instead of icon -->
+                          <a href="#" aria-label="X (Twitter)" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-700 hover:bg-red-600 hover:text-white transition-colors shadow-sm">
                             <span class="font-semibold" style="font-family: Arial, sans-serif;">X</span>
                           </a>
-                          <a href="#" aria-label="Instagram" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-teal-500/20 transition-colors">
+                          <a href="#" aria-label="Instagram" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-700 hover:bg-red-600 hover:text-white transition-colors shadow-sm">
                             <i class="fab fa-instagram"></i>
                           </a>
-                          <a href="#" aria-label="LinkedIn" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-teal-500/20 transition-colors">
+                          <a href="#" aria-label="LinkedIn" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-700 hover:bg-red-600 hover:text-white transition-colors shadow-sm">
                             <i class="fab fa-linkedin-in"></i>
                           </a>
                         </div>
@@ -532,21 +531,21 @@
                 <div data-aos="fade-up" data-aos-delay="200">
                     {{-- Display Success Message --}}
                     @if(session('contact_success'))
-                        <div class="mb-4 p-3 rounded-md bg-green-500/20 text-green-400 text-sm">
+                        <div class="mb-4 p-3 rounded-md bg-green-50 border border-green-200 text-green-700 text-sm">
                             {{ session('contact_success') }}
                         </div>
                     @endif
 
                     {{-- Display General Error Message --}}
                      @if(session('contact_error'))
-                        <div class="mb-4 p-3 rounded-md bg-red-500/20 text-red-400 text-sm">
+                        <div class="mb-4 p-3 rounded-md bg-red-50 border border-red-200 text-red-700 text-sm">
                             {{ session('contact_error') }}
                         </div>
                     @endif
 
                     {{-- Display Validation Errors --}}
                     @if(isset($errors) && $errors->contact->any()) {{-- Check 'contact' error bag --}}
-                        <div class="mb-4 p-3 rounded-md bg-red-500/20 text-red-400 text-sm">
+                        <div class="mb-4 p-3 rounded-md bg-red-50 border border-red-200 text-red-700 text-sm">
                             <strong class="font-bold">Oops! Please fix the following:</strong>
                             <ul class="list-disc pl-5 mt-2">
                                 @foreach ($errors->contact->all() as $error)
@@ -559,26 +558,26 @@
                     <form class="space-y-6" action="{{ route('contact.store') }}" method="POST">
                          @csrf
                         <div>
-                            <label for="name" class="block text-sm font-medium text-white mb-2">Your Name</label>
-                            <input type="text" id="name" name="name" required value="{{ old('name') }}" class="w-full bg-gray-800 border @error('name', 'contact') border-red-500 @else border-gray-700 @enderror rounded-md py-3 px-4 text-white focus:outline-none focus:border-teal-500 transition-colors" placeholder="Enter your name">
+                            <label for="name" class="block text-sm font-medium text-gray-900 mb-2">Your Name</label>
+                            <input type="text" id="name" name="name" required value="{{ old('name') }}" class="w-full bg-white border @error('name', 'contact') border-red-500 @else border-gray-300 @enderror rounded-md py-3 px-4 text-gray-900 focus:outline-none focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-colors" placeholder="Enter your name">
                         </div>
 
                         <div>
-                            <label for="email_contact" class="block text-sm font-medium text-white mb-2">Your Email</label>
-                            <input type="email" id="email_contact" name="email" required value="{{ old('email') }}" class="w-full bg-gray-800 border @error('email', 'contact') border-red-500 @else border-gray-700 @enderror rounded-md py-3 px-4 text-white focus:outline-none focus:border-teal-500 transition-colors" placeholder="Enter your email">
+                            <label for="email_contact" class="block text-sm font-medium text-gray-900 mb-2">Your Email</label>
+                            <input type="email" id="email_contact" name="email" required value="{{ old('email') }}" class="w-full bg-white border @error('email', 'contact') border-red-500 @else border-gray-300 @enderror rounded-md py-3 px-4 text-gray-900 focus:outline-none focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-colors" placeholder="Enter your email">
                         </div>
 
                         <div>
-                            <label for="subject" class="block text-sm font-medium text-white mb-2">Subject</label>
-                            <input type="text" id="subject" name="subject" required value="{{ old('subject') }}" class="w-full bg-gray-800 border @error('subject', 'contact') border-red-500 @else border-gray-700 @enderror rounded-md py-3 px-4 text-white focus:outline-none focus:border-teal-500 transition-colors" placeholder="Enter subject">
+                            <label for="subject" class="block text-sm font-medium text-gray-900 mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" required value="{{ old('subject') }}" class="w-full bg-white border @error('subject', 'contact') border-red-500 @else border-gray-300 @enderror rounded-md py-3 px-4 text-gray-900 focus:outline-none focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-colors" placeholder="Enter subject">
                         </div>
 
                         <div>
-                            <label for="message" class="block text-sm font-medium text-white mb-2">Your Message</label>
-                            <textarea id="message" name="message" rows="5" required class="w-full bg-gray-800 border @error('message', 'contact') border-red-500 @else border-gray-700 @enderror rounded-md py-3 px-4 text-white focus:outline-none focus:border-teal-500 transition-colors" placeholder="Enter your message">{{ old('message') }}</textarea>
+                            <label for="message" class="block text-sm font-medium text-gray-900 mb-2">Your Message</label>
+                            <textarea id="message" name="message" rows="5" required class="w-full bg-white border @error('message', 'contact') border-red-500 @else border-gray-300 @enderror rounded-md py-3 px-4 text-gray-900 focus:outline-none focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-colors" placeholder="Enter your message">{{ old('message') }}</textarea>
                         </div>
 
-                        <button type="submit" class="px-8 py-3 btn-gradient text-white font-medium rounded-md hover:opacity-90 transition-opacity">Send Message</button>
+                        <button type="submit" class="px-8 py-3 btn-gradient text-white font-medium rounded-md hover:opacity-90 transition-opacity shadow-lg">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -586,13 +585,13 @@
     </section>
 
     <!-- FOOTER SECTION -->
-<footer id="newsletter-section" class="bg-gray-800 py-12 border-t border-gray-700">
+<footer id="newsletter-section" class="bg-gray-900 py-12 border-t border-gray-800">
     <div class="container mx-auto px-6">
         <div class="grid md:grid-cols-4 gap-8">
             {{-- Column 1: Logo/About --}}
             <div class="col-span-1 md:col-span-1">
                 <div class="flex items-center mb-4">
-                    <img src="/images/logo.png" alt="MHA Plus Logo" class="h-12">
+                    <img src="/images/logo-new.png" alt="MHA Plus Logo" class="h-12">
                     <span class="ml-3 text-xl font-semibold text-white">MHA <span class="gradient-text">Plus</span></span>
                 </div>
                 <p class="text-gray-400 mb-6">Your complete marketing solution in Erbil, Iraq. We deliver high-quality services tailored to your business needs.</p>
@@ -602,10 +601,10 @@
             <div>
                 <h3 class="text-white text-lg font-semibold mb-4">Quick Links</h3>
                 <ul class="space-y-2">
-                    <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                    <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
-                    <li><a href="#portfolio" class="text-gray-400 hover:text-white transition-colors">Portfolio</a></li>
-                    <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    <li><a href="#about" class="text-gray-400 hover:text-red-500 transition-colors">About Us</a></li>
+                    <li><a href="#services" class="text-gray-400 hover:text-red-500 transition-colors">Services</a></li>
+                    <li><a href="#portfolio" class="text-gray-400 hover:text-red-500 transition-colors">Portfolio</a></li>
+                    <li><a href="#contact" class="text-gray-400 hover:text-red-500 transition-colors">Contact</a></li>
                 </ul>
             </div>
 
@@ -613,11 +612,11 @@
             <div>
                 <h3 class="text-white text-lg font-semibold mb-4">Our Services</h3>
                 <ul class="space-y-2">
-                    <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Printing & Branding</a></li>
-                    <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Graphic Design</a></li>
-                    <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Production & Creative</a></li>
-                    <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Social Media Management</a></li>
-                    <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Website Development</a></li>
+                    <li><a href="#services" class="text-gray-400 hover:text-red-500 transition-colors">Printing & Branding</a></li>
+                    <li><a href="#services" class="text-gray-400 hover:text-red-500 transition-colors">Graphic Design</a></li>
+                    <li><a href="#services" class="text-gray-400 hover:text-red-500 transition-colors">Production & Creative</a></li>
+                    <li><a href="#services" class="text-gray-400 hover:text-red-500 transition-colors">Social Media Management</a></li>
+                    <li><a href="#services" class="text-gray-400 hover:text-red-500 transition-colors">Website Development</a></li>
                 </ul>
             </div>
 
@@ -628,21 +627,21 @@
 
                 {{-- Display Success Message --}}
                 @if(session('newsletter_success'))
-                    <div class="mb-4 p-3 rounded-md bg-green-500/20 text-green-400 text-sm">
+                    <div class="mb-4 p-3 rounded-md bg-green-500/20 border border-green-500/30 text-green-400 text-sm">
                         {{ session('newsletter_success') }}
                     </div>
                 @endif
 
                 {{-- Display General Error Message --}}
                  @if(session('newsletter_error'))
-                    <div class="mb-4 p-3 rounded-md bg-red-500/20 text-red-400 text-sm">
+                    <div class="mb-4 p-3 rounded-md bg-red-500/20 border border-red-500/30 text-red-400 text-sm">
                         {{ session('newsletter_error') }}
                     </div>
                 @endif
 
                 {{-- Display Validation Errors --}}
                 @if(isset($errors) && $errors instanceof ViewErrorBag && $errors->newsletter->any())
-                    <div class="mb-4 p-3 rounded-md bg-red-500/20 text-red-400 text-sm">
+                    <div class="mb-4 p-3 rounded-md bg-red-500/20 border border-red-500/30 text-red-400 text-sm">
                         <ul class="list-disc pl-5">
                             @foreach ($errors->newsletter->all() as $error)
                                 <li>{{ $error }}</li>
@@ -661,29 +660,29 @@
                         required
                         value="{{ old('email') }}"
                         aria-label="Email for newsletter"
-                        class="w-full bg-gray-900 border border-gray-700 rounded-l-md py-2 px-4 text-white focus:outline-none focus:border-teal-500 transition-colors @error('email', 'newsletter') border-red-500 @enderror"
+                        class="w-full bg-gray-800 border border-gray-700 rounded-l-md py-2 px-4 text-white focus:outline-none focus:border-red-600 focus:ring-2 focus:ring-red-600/20 transition-colors @error('email', 'newsletter') border-red-500 @enderror"
                     >
-                    <button type="submit" aria-label="Subscribe to newsletter" class="bg-gradient-to-r from-teal-500 to-blue-600 text-white px-4 rounded-r-md hover:opacity-90 transition-opacity">
+                    <button type="submit" aria-label="Subscribe to newsletter" class="bg-gradient-to-r from-red-600 to-red-900 text-white px-4 rounded-r-md hover:opacity-90 transition-opacity shadow-lg">
                         <i class="fas fa-paper-plane"></i>
                     </button>
                 </form>
             </div>
         </div>
 
-        <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p class="text-gray-500">&copy; {{ date('Y') }} MHA Plus. All rights reserved.</p>
             <div class="flex space-x-6 mt-4 md:mt-0">
                 {{-- Social Links --}}
-                <a href="#" aria-label="Facebook" class="text-gray-500 hover:text-white transition-colors">
+                <a href="#" aria-label="Facebook" class="text-gray-500 hover:text-red-500 transition-colors">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="#" aria-label="Twitter" class="text-gray-500 hover:text-white transition-colors">
+                <a href="#" aria-label="Twitter" class="text-gray-500 hover:text-red-500 transition-colors">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a href="#" aria-label="Instagram" class="text-gray-500 hover:text-white transition-colors">
+                <a href="#" aria-label="Instagram" class="text-gray-500 hover:text-red-500 transition-colors">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="#" aria-label="LinkedIn" class="text-gray-500 hover:text-white transition-colors">
+                <a href="#" aria-label="LinkedIn" class="text-gray-500 hover:text-red-500 transition-colors">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
             </div>
@@ -691,7 +690,7 @@
     </div>
 </footer>
 
-    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 btn-gradient rounded-full flex items-center justify-center text-white opacity-0 invisible transition-all duration-300">
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 btn-gradient rounded-full flex items-center justify-center text-white opacity-0 invisible transition-all duration-300 shadow-lg">
         <i class="fas fa-arrow-up"></i>
     </button>
 
@@ -735,13 +734,13 @@
                 button.addEventListener('click', () => {
                     // Remove active class from all buttons
                     filterButtons.forEach(btn => {
-                        btn.classList.remove('active', 'border-teal-500', 'text-white', 'bg-teal-500/10');
-                        btn.classList.add('border-gray-700', 'text-gray-300', 'bg-gray-800'); // Changed bg-gray-900 to bg-gray-800
+                        btn.classList.remove('active', 'border-red-600', 'text-white', 'bg-red-600', 'border-2');
+                        btn.classList.add('border', 'border-gray-300', 'text-gray-700', 'bg-white');
                     });
 
                     // Add active class to clicked button
-                    button.classList.add('active', 'border-teal-500', 'text-white', 'bg-teal-500/10');
-                    button.classList.remove('border-gray-700', 'text-gray-300', 'bg-gray-800'); // Changed bg-gray-900 to bg-gray-800
+                    button.classList.add('active', 'border-red-600', 'text-red-600', 'border-2');
+                    button.classList.remove('border', 'border-gray-300', 'text-gray-700');
 
                     const filter = button.getAttribute('data-filter');
 
