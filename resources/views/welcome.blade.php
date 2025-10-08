@@ -423,8 +423,8 @@
                                     <i class="fas fa-image text-gray-400 text-4xl"></i>
                                 </div>
                             @endif
-                            <!-- Darkening layer (only darkens image) -->
-                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                            <!-- Darkening layer (only darkens image) - refined to requested rgba(0,0,0,0.45) -->
+                            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style="background: rgba(0,0,0,0.45);"></div>
                             <!-- Original overlay with gradient & content -->
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                                 @if($project->category === 'web')
