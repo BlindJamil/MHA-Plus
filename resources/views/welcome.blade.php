@@ -397,7 +397,7 @@
         </div>
 
         <div class="flex flex-wrap justify-center gap-4 mb-10" data-aos="fade-up">
-            <button class="portfolio-filter active px-6 py-2 rounded-md bg-white border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition-colors shadow-sm" data-filter="all">All Projects</button>
+            <button class="portfolio-filter active px-6 py-2 rounded-md bg-white border-2 border-red-600 text-red-600 transition-colors shadow-sm" data-filter="all">All Projects</button>
             <button class="portfolio-filter px-6 py-2 rounded-md bg-white border border-gray-300 text-gray-700 hover:border-red-600 hover:text-red-600 transition-colors shadow-sm" data-filter="web">Web Development</button>
             <button class="portfolio-filter px-6 py-2 rounded-md bg-white border border-gray-300 text-gray-700 hover:border-red-600 hover:text-red-600 transition-colors shadow-sm" data-filter="branding">Branding</button>
             <button class="portfolio-filter px-6 py-2 rounded-md bg-white border border-gray-300 text-gray-700 hover:border-red-600 hover:text-red-600 transition-colors shadow-sm" data-filter="design">Graphic Design</button>
