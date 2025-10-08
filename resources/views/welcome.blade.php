@@ -137,7 +137,7 @@
     <header class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
             <a href="#home" class="flex items-center">
-                <img src="/images/logo-new.png" alt="MHA Plus Logo" class="h-12">
+                <img src="/images/logo-transparent.png" alt="MHA Plus Logo" class="h-12">
                 <span class="ml-3 text-xl font-semibold text-gray-900 hidden sm:inline-block">MHA <span class="gradient-text">Plus</span></span>
             </a>
     
@@ -591,7 +591,7 @@
             {{-- Column 1: Logo/About --}}
             <div class="col-span-1 md:col-span-1">
                 <div class="flex items-center mb-4">
-                    <img src="/images/logo-new.png" alt="MHA Plus Logo" class="h-12">
+                    <img src="/images/logo-transparent.png" alt="MHA Plus Logo" class="h-12">
                 </div>
                 <p class="text-gray-600 mb-6 leading-relaxed">Your complete marketing solution in Erbil, Iraq. We deliver high-quality services tailored to your business needs.</p>
                 <div class="flex space-x-4">
