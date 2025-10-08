@@ -37,6 +37,11 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
         }
+        /* Explicit project hover overlay utility - ensures presence regardless of purge */
+        .project-hover-overlay { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end; padding:1.5rem; background:linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 45%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.30) 85%, rgba(0,0,0,0.10) 100%); opacity:0; transition:opacity .35s ease; }
+        .group:hover > .project-hover-overlay { opacity:1; }
+        .project-hover-overlay h3 { text-shadow:0 2px 4px rgba(0,0,0,.6); }
+        .project-hover-overlay p { text-shadow:0 1px 3px rgba(0,0,0,.55); }
     </style>
     @stack('styles')
 </head>
