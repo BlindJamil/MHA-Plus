@@ -43,7 +43,7 @@
                                 <i class="fas fa-image text-gray-400 text-4xl"></i>
                             </div>
                         @endif
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 backdrop-blur-[2px]">
+                        <div class="project-overlay">
                             @if($project->category === 'web')
                                 @if($project->is_online)
                                     <div class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">Online</div>
