@@ -43,27 +43,30 @@
                                 <i class="fas fa-image text-gray-400 text-4xl"></i>
                             </div>
                         @endif
-                        <div class="project-overlay">
+                        <!-- Darkening layer only -->
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                        <!-- Original overlay content -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                             @if($project->category === 'web')
                                 @if($project->is_online)
-                                    <div class="project-status-badge project-status-online">Online</div>
+                                    <div class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">Online</div>
                                 @elseif($project->is_offline)
-                                    <div class="project-status-badge project-status-offline">Offline</div>
+                                    <div class="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">Offline</div>
                                 @else
-                                    <div class="project-status-badge project-status-template">Template</div>
+                                    <div class="absolute top-4 right-4 bg-purple-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">Template</div>
                                 @endif
                             @endif
-                            <h3>{{ $project->title }}</h3>
-                            <p>{{ Str::limit($project->description, 80) }}</p>
-                            <div class="tech-badges flex flex-wrap gap-2 mb-4">
+                            <h3 class="text-xl font-semibold text-white mb-1">{{ $project->title }}</h3>
+                            <p class="text-gray-200 mb-3 text-sm">{{ Str::limit($project->description, 80) }}</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
                                 @if($project->technologies_array && count($project->technologies_array) > 0)
                                     @foreach($project->technologies_array as $tech)
-                                        <span class="text-[10px] tracking-wide px-2.5 py-1 rounded-full text-white font-medium">{{ $tech }}</span>
+                                        <span class="text-xs px-3 py-1 bg-red-600/80 text-white rounded-full">{{ $tech }}</span>
                                     @endforeach
                                 @endif
                             </div>
-                            <div>
-                                <a href="{{ route('projects.show', $project->id) }}" class="action-btn inline-block">View Details</a>
+                            <div class="flex space-x-3">
+                                <a href="{{ route('projects.show', $project->id) }}" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors text-sm shadow-md">View Details</a>
                             </div>
                         </div>
                     </div>
