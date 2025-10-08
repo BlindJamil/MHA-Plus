@@ -37,24 +37,6 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
         }
-        /* Reusable strong overlay for project cards */
-        .project-overlay {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 1.5rem; /* p-6 */
-            background: linear-gradient(to top, rgba(0,0,0,0.92), rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.45) 65%, rgba(0,0,0,0.25) 85%, rgba(0,0,0,0.15));
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            opacity: 0;
-            transition: opacity .35s ease;
-        }
-        .group:hover .project-overlay { opacity: 1; }
-        /* Ensure text inside overlay stays crisp */
-        .project-overlay h3 { text-shadow: 0 2px 4px rgba(0,0,0,0.6); }
-        .project-overlay p { text-shadow: 0 1px 3px rgba(0,0,0,0.55); }
     </style>
     @stack('styles')
 </head>
