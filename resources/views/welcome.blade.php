@@ -171,7 +171,7 @@
                 <p class="text-xl md:text-2xl mb-8 text-gray-700">We offer comprehensive services from printing and branding to social media management and website development.</p>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#services" class="px-8 py-3 btn-gradient text-white font-medium rounded-md hover:opacity-90 transition-opacity inline-block text-center shadow-lg">Our Services</a>
-                    <a href="#portfolio" class="px-8 py-3 border-2 border-red-600 text-red-600 font-medium rounded-md hover:bg-red-600 hover:text-white transition-colors inline-block text-center">View Portfolio</a>
+                    <a href="#portfolio" class="px-8 py-3 bg-white border-2 border-red-600 text-red-600 font-medium rounded-md hover:bg-red-600 hover:text-white hover:shadow-lg transition-all inline-block text-center shadow-md">View Portfolio</a>
                 </div>
             </div>
         </div>
