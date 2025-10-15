@@ -496,7 +496,7 @@
                         </div>
                         <div>
                             <h3 class="text-xl font-semibold text-gray-900 mb-2">Email Us</h3>
-                            <p class="text-gray-600"><a href="mailto:info@mhaplus.com" class="hover:text-red-600 transition-colors">mhagroup@gmail.com</a></p>
+                            <p class="text-gray-600"><a href="mailto:info@mhaplus.com" class="hover:text-red-600 transition-colors">info@mhaplus.com</a></p>
                         </div>
                     </div>
 
