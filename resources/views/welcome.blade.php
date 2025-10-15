@@ -496,7 +496,7 @@
                         </div>
                         <div>
                             <h3 class="text-xl font-semibold text-gray-900 mb-2">Email Us</h3>
-                            <p class="text-gray-600"><a href="mailto:mhagroup@gmail.com" class="hover:text-red-600 transition-colors">mhagroup@gmail.com</a></p>
+                            <p class="text-gray-600"><a href="mailto:info@mhaplus.com" class="hover:text-red-600 transition-colors">mhagroup@gmail.com</a></p>
                         </div>
                     </div>
 
@@ -748,11 +748,7 @@
     </div>
 </footer>
 
-    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 btn-gradient rounded-full flex items-center justify-center text-white opacity-0 invisible transition-all duration-300 shadow-lg">
-    </div>
-</footer>
-
-    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 btn-gradient rounded-full flex items-center justify-center text-white opacity-0 invisible transition-all duration-300 shadow-lg">
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 btn-gradient rounded-full flex items-center justify-center text-white opacity-0 invisible transition-all duration-300 shadow-lg hover:scale-110">
         <i class="fas fa-arrow-up"></i>
     </button>
 
