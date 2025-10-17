@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MHA Plus - Marketing Solutions in Erbil, Iraq</title>
     <meta name="description" content="MHA Plus offers comprehensive marketing services from printing and branding to social media management and website development in Erbil, Iraq.">
 
@@ -23,39 +23,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 
     <style>
-        /* Global anchor alignment helpers */
-        :root {
-            /* Fallback; JS will set this to the actual header height */
-            --header-offset: 80px;
-        }
-        /* Let native anchor jumps and scrollIntoView account for fixed header */
-        html { scroll-padding-top: var(--header-offset); }
-        section[id] { scroll-margin-top: var(--header-offset); }
-
-        /* Prevent horizontal overflow and stabilize vertical scrollbar gutter */
-        html {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-            /* Reserve space for vertical scrollbar to avoid layout shift/flicker on load */
-            scrollbar-gutter: stable both-edges;
-        }
-        
         body {
             font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
         }
-        /* Lock vertical scroll during initial paint to avoid transient scrollbars */
-        body.preload {
-            overflow-y: hidden;
-        }
-        
-        /* Ensure all containers don't overflow */
-        * {
-            max-width: 100%;
-        }
-        
         .gradient-text {
             background: linear-gradient(90deg, #E02020, #8B0000);
             -webkit-background-clip: text;
@@ -81,54 +51,9 @@
         .portfolio-item:hover {
             transform: translateY(-10px);
         }
-        
-        /* Fix back-to-top button on mobile */
-        #back-to-top {
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        /* Ensure viewport doesn't zoom out on mobile */
-        @media (max-width: 768px) {
-            #back-to-top {
-                bottom: 1rem !important;
-                right: 1rem !important;
-                width: 3rem;
-                height: 3rem;
-            }
-            
-            /* Prevent elements from going outside viewport */
-            .container {
-                max-width: 100vw;
-                overflow-x: hidden;
-            }
-            
-            /* Fix any padding/margin issues on mobile */
-            section {
-                overflow-x: hidden;
-            }
-            
-            /* Ensure images don't overflow */
-            img {
-                max-width: 100%;
-                height: auto;
-            }
-            
-            /* Fix grid layouts on mobile */
-            .grid {
-                overflow-x: hidden;
-            }
-            
-            /* Ensure hero text fits properly */
-            h1 {
-                word-wrap: break-word;
-                overflow-wrap: break-word;
-            }
-        }
-        
-        /* Additional safety for all screen sizes */
-        section, header, footer {
-            max-width: 100vw;
-            overflow-x: hidden;
+        /* Add smooth scroll behavior */
+        html {
+             scroll-behavior: smooth;
         }
 
         /* --- Logo Slider Styles --- */
@@ -138,8 +63,6 @@
             background: #FAFAFA;
             white-space: nowrap;
             position: relative;
-            width: 100%;
-            max-width: 100vw;
         }
 
         .logo-slider::before,
@@ -150,7 +73,6 @@
             height: 100%;
             content: "";
             z-index: 2;
-            pointer-events: none;
         }
 
         .logo-slider::before {
@@ -200,23 +122,6 @@
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); } /* Scroll by half the total width (since logos are duplicated) */
         }
-        
-        /* Mobile adjustments for logo slider */
-        @media (max-width: 768px) {
-            .logo-slider::before,
-            .logo-slider::after {
-                width: 50px;
-            }
-            
-            .logo-slide {
-                height: 60px;
-                margin: 0 20px;
-            }
-            
-            .logo-slide img {
-                max-width: 100px;
-            }
-        }
         /* --- End Logo Slider Styles --- */
 
 
@@ -228,19 +133,7 @@
 
     </style>
 </head>
-<body class="bg-white text-gray-900 preload">
-    <script>
-        // Remove preload lock ASAP after first paint and again on load as fallback
-        (function() {
-            var removePreload = function() {
-                document.body && document.body.classList.remove('preload');
-            };
-            // Next tick after DOM starts parsing body
-            setTimeout(removePreload, 0);
-            // Ensure removal after window load
-            window.addEventListener('load', removePreload);
-        })();
-    </script>
+<body class="bg-white text-gray-900">
     <header class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
             <a href="#home" class="flex items-center">
@@ -855,7 +748,7 @@
     </div>
 </footer>
 
-    <button id="back-to-top" class="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 w-12 h-12 btn-gradient rounded-full flex items-center justify-center text-white opacity-0 invisible transition-all duration-300 shadow-lg hover:scale-110 z-40">
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 btn-gradient rounded-full flex items-center justify-center text-white opacity-0 invisible transition-all duration-300 shadow-lg hover:scale-110">
         <i class="fas fa-arrow-up"></i>
     </button>
 
@@ -946,17 +839,7 @@
             });
         }
 
-        // Compute header offset dynamically and expose via CSS var
-        const headerEl = document.querySelector('header');
-        function updateHeaderOffsetVar() {
-            const headerOffset = headerEl ? Math.ceil(headerEl.getBoundingClientRect().height) : 80;
-            document.documentElement.style.setProperty('--header-offset', headerOffset + 'px');
-            return headerOffset;
-        }
-        let CURRENT_HEADER_OFFSET = updateHeaderOffsetVar();
-        window.addEventListener('resize', () => { CURRENT_HEADER_OFFSET = updateHeaderOffsetVar(); });
-
-        // Smooth scroll for navigation links (within page only)
+        // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                  const href = this.getAttribute('href');
@@ -966,8 +849,8 @@
                     const targetElement = document.querySelector(href);
 
                     if (targetElement) {
-                        // Calculate offset based on measured header height
-                        const headerOffset = CURRENT_HEADER_OFFSET;
+                        // Calculate offset based on header height (adjust 80 if your header height changes)
+                        const headerOffset = 80;
                         const elementPosition = targetElement.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -983,22 +866,6 @@
                     }
                  }
             });
-        });
-
-        // On load, correct scroll position if arriving with a hash (after AOS/images settle)
-        window.addEventListener('load', () => {
-            // Recalculate header height after fonts/AOS
-            CURRENT_HEADER_OFFSET = updateHeaderOffsetVar();
-            if (location.hash && location.hash.length > 1) {
-                const target = document.querySelector(location.hash);
-                if (target) {
-                    // Delay slightly to allow layout/animations
-                    setTimeout(() => {
-                        const y = target.getBoundingClientRect().top + window.pageYOffset - CURRENT_HEADER_OFFSET;
-                        window.scrollTo({ top: Math.max(0, y), behavior: 'instant' in window ? 'instant' : 'auto' });
-                    }, 50);
-                }
-            }
         });
 
         // Logo slider: pause only when interacting with a specific logo and scale it smoothly

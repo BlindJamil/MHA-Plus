@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'MHA Plus - Marketing Solutions in Erbil, Iraq')</title>
     <meta name="description" content="MHA Plus offers comprehensive marketing services from printing and branding to social media management and website development in Erbil, Iraq.">
 
@@ -16,29 +16,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 
     <style>
-        :root { --header-offset: 80px; }
-        html { scroll-padding-top: var(--header-offset); }
-        section[id] { scroll-margin-top: var(--header-offset); }
-        /* Prevent horizontal overflow and stabilize vertical scrollbar gutter */
-        html {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-            scrollbar-gutter: stable both-edges;
-        }
-        
         body {
             font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
         }
-        body.preload { overflow-y: hidden; }
-        
-        /* Ensure all containers don't overflow */
-        * {
-            max-width: 100%;
+        html {
+             scroll-behavior: smooth;
         }
-        
         .gradient-text {
             background: linear-gradient(90deg, #E02020, #8B0000);
             -webkit-background-clip: text;
@@ -54,63 +37,11 @@
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
         }
-        
-        /* Fix back-to-top button on mobile */
-        #back-to-top {
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            #back-to-top {
-                bottom: 1rem !important;
-                right: 1rem !important;
-                width: 3rem;
-                height: 3rem;
-            }
-            
-            /* Prevent elements from going outside viewport */
-            .container {
-                max-width: 100vw;
-                overflow-x: hidden;
-            }
-            
-            /* Fix any padding/margin issues on mobile */
-            section {
-                overflow-x: hidden;
-            }
-            
-            /* Ensure images don't overflow */
-            img {
-                max-width: 100%;
-                height: auto;
-            }
-            
-            /* Fix grid layouts on mobile */
-            .grid {
-                overflow-x: hidden;
-            }
-        }
-        
-        /* Additional safety for all screen sizes */
-        section, header, footer, main {
-            max-width: 100vw;
-            overflow-x: hidden;
-        }
     /* (Removed advanced overlay styles per request – returning to original card behavior) */
     </style>
     @stack('styles')
 </head>
-<body class="bg-white text-gray-900 antialiased preload">
-    <script>
-        (function() {
-            var removePreload = function() {
-                document.body && document.body.classList.remove('preload');
-            };
-            setTimeout(removePreload, 0);
-            window.addEventListener('load', removePreload);
-        })();
-    </script>
+<body class="bg-white text-gray-900 antialiased">
 
     <header class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
@@ -220,7 +151,7 @@
         </div>
     </footer>
 
-    <button id="back-to-top" class="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 w-12 h-12 btn-gradient rounded-full flex items-center justify-center text-white opacity-0 invisible transition-all duration-300 z-50 shadow-lg hover:scale-110">
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 btn-gradient rounded-full flex items-center justify-center text-white opacity-0 invisible transition-all duration-300 z-50 shadow-lg">
         <i class="fas fa-arrow-up"></i>
     </button>
 
@@ -230,14 +161,6 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const headerEl = document.querySelector('header');
-        function updateHeaderOffsetVar() {
-            const headerOffset = headerEl ? Math.ceil(headerEl.getBoundingClientRect().height) : 80;
-            document.documentElement.style.setProperty('--header-offset', headerOffset + 'px');
-            return headerOffset;
-        }
-        let CURRENT_HEADER_OFFSET = updateHeaderOffsetVar();
-        window.addEventListener('resize', () => { CURRENT_HEADER_OFFSET = updateHeaderOffsetVar(); });
         if (typeof AOS !== 'undefined') {
             AOS.init({ duration: 800, once: true });
             document.body.classList.add('aos-initialized'); // Mark as initialized
@@ -273,7 +196,7 @@
                     e.preventDefault();
                     const targetElement = document.querySelector(targetUrl.hash);
                     if (targetElement) {
-                        const headerOffset = CURRENT_HEADER_OFFSET;
+                        const headerOffset = 80;
                         const elementPosition = targetElement.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                         window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
@@ -296,20 +219,6 @@
             });
             backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
         }
-
-        // Correct initial hash offset after load (e.g., when linking directly into a section)
-        window.addEventListener('load', () => {
-            CURRENT_HEADER_OFFSET = updateHeaderOffsetVar();
-            if (location.hash && location.hash.length > 1) {
-                const t = document.querySelector(location.hash);
-                if (t) {
-                    setTimeout(() => {
-                        const y = t.getBoundingClientRect().top + window.pageYOffset - CURRENT_HEADER_OFFSET;
-                        window.scrollTo({ top: Math.max(0, y), behavior: 'instant' in window ? 'instant' : 'auto' });
-                    }, 50);
-                }
-            }
-        });
     });
     </script>
     @stack('scripts')
