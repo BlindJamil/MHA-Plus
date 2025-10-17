@@ -23,6 +23,15 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 
     <style>
+        /* Global anchor alignment helpers */
+        :root {
+            /* Fallback; JS will set this to the actual header height */
+            --header-offset: 80px;
+        }
+        /* Let native anchor jumps and scrollIntoView account for fixed header */
+        html { scroll-padding-top: var(--header-offset); }
+        section[id] { scroll-margin-top: var(--header-offset); }
+
         /* Prevent horizontal overflow and stabilize vertical scrollbar gutter */
         html {
             scroll-behavior: smooth;
@@ -937,7 +946,17 @@
             });
         }
 
-        // Smooth scroll for navigation links
+        // Compute header offset dynamically and expose via CSS var
+        const headerEl = document.querySelector('header');
+        function updateHeaderOffsetVar() {
+            const headerOffset = headerEl ? Math.ceil(headerEl.getBoundingClientRect().height) : 80;
+            document.documentElement.style.setProperty('--header-offset', headerOffset + 'px');
+            return headerOffset;
+        }
+        let CURRENT_HEADER_OFFSET = updateHeaderOffsetVar();
+        window.addEventListener('resize', () => { CURRENT_HEADER_OFFSET = updateHeaderOffsetVar(); });
+
+        // Smooth scroll for navigation links (within page only)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                  const href = this.getAttribute('href');
@@ -947,8 +966,8 @@
                     const targetElement = document.querySelector(href);
 
                     if (targetElement) {
-                        // Calculate offset based on header height (adjust 80 if your header height changes)
-                        const headerOffset = 80;
+                        // Calculate offset based on measured header height
+                        const headerOffset = CURRENT_HEADER_OFFSET;
                         const elementPosition = targetElement.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -964,6 +983,22 @@
                     }
                  }
             });
+        });
+
+        // On load, correct scroll position if arriving with a hash (after AOS/images settle)
+        window.addEventListener('load', () => {
+            // Recalculate header height after fonts/AOS
+            CURRENT_HEADER_OFFSET = updateHeaderOffsetVar();
+            if (location.hash && location.hash.length > 1) {
+                const target = document.querySelector(location.hash);
+                if (target) {
+                    // Delay slightly to allow layout/animations
+                    setTimeout(() => {
+                        const y = target.getBoundingClientRect().top + window.pageYOffset - CURRENT_HEADER_OFFSET;
+                        window.scrollTo({ top: Math.max(0, y), behavior: 'instant' in window ? 'instant' : 'auto' });
+                    }, 50);
+                }
+            }
         });
 
         // Logo slider: pause only when interacting with a specific logo and scale it smoothly
