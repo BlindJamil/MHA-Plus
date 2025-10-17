@@ -23,10 +23,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 
     <style>
-        /* Prevent horizontal overflow */
+        /* Prevent horizontal overflow and stabilize vertical scrollbar gutter */
         html {
             scroll-behavior: smooth;
             overflow-x: hidden;
+            /* Reserve space for vertical scrollbar to avoid layout shift/flicker on load */
+            scrollbar-gutter: stable both-edges;
         }
         
         body {
@@ -34,6 +36,10 @@
             overflow-x: hidden;
             width: 100%;
             position: relative;
+        }
+        /* Lock vertical scroll during initial paint to avoid transient scrollbars */
+        body.preload {
+            overflow-y: hidden;
         }
         
         /* Ensure all containers don't overflow */
@@ -213,7 +219,19 @@
 
     </style>
 </head>
-<body class="bg-white text-gray-900">
+<body class="bg-white text-gray-900 preload">
+    <script>
+        // Remove preload lock ASAP after first paint and again on load as fallback
+        (function() {
+            var removePreload = function() {
+                document.body && document.body.classList.remove('preload');
+            };
+            // Next tick after DOM starts parsing body
+            setTimeout(removePreload, 0);
+            // Ensure removal after window load
+            window.addEventListener('load', removePreload);
+        })();
+    </script>
     <header class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
             <a href="#home" class="flex items-center">

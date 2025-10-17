@@ -16,10 +16,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 
     <style>
-        /* Prevent horizontal overflow */
+        /* Prevent horizontal overflow and stabilize vertical scrollbar gutter */
         html {
             scroll-behavior: smooth;
             overflow-x: hidden;
+            scrollbar-gutter: stable both-edges;
         }
         
         body {
@@ -28,6 +29,7 @@
             width: 100%;
             position: relative;
         }
+        body.preload { overflow-y: hidden; }
         
         /* Ensure all containers don't overflow */
         * {
@@ -96,7 +98,16 @@
     </style>
     @stack('styles')
 </head>
-<body class="bg-white text-gray-900 antialiased">
+<body class="bg-white text-gray-900 antialiased preload">
+    <script>
+        (function() {
+            var removePreload = function() {
+                document.body && document.body.classList.remove('preload');
+            };
+            setTimeout(removePreload, 0);
+            window.addEventListener('load', removePreload);
+        })();
+    </script>
 
     <header class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
