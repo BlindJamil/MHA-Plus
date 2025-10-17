@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>@yield('title', 'MHA Plus - Marketing Solutions in Erbil, Iraq')</title>
     <meta name="description" content="MHA Plus offers comprehensive marketing services from printing and branding to social media management and website development in Erbil, Iraq.">
 
@@ -16,12 +16,24 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 
     <style>
+        /* Prevent horizontal overflow */
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
         body {
             font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
         }
-        html {
-             scroll-behavior: smooth;
+        
+        /* Ensure all containers don't overflow */
+        * {
+            max-width: 100%;
         }
+        
         .gradient-text {
             background: linear-gradient(90deg, #E02020, #8B0000);
             -webkit-background-clip: text;
@@ -36,6 +48,49 @@
             content: "𝕏";
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
+        }
+        
+        /* Fix back-to-top button on mobile */
+        #back-to-top {
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            #back-to-top {
+                bottom: 1rem !important;
+                right: 1rem !important;
+                width: 3rem;
+                height: 3rem;
+            }
+            
+            /* Prevent elements from going outside viewport */
+            .container {
+                max-width: 100vw;
+                overflow-x: hidden;
+            }
+            
+            /* Fix any padding/margin issues on mobile */
+            section {
+                overflow-x: hidden;
+            }
+            
+            /* Ensure images don't overflow */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+            
+            /* Fix grid layouts on mobile */
+            .grid {
+                overflow-x: hidden;
+            }
+        }
+        
+        /* Additional safety for all screen sizes */
+        section, header, footer, main {
+            max-width: 100vw;
+            overflow-x: hidden;
         }
     /* (Removed advanced overlay styles per request – returning to original card behavior) */
     </style>
@@ -151,7 +206,7 @@
         </div>
     </footer>
 
-    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 btn-gradient rounded-full flex items-center justify-center text-white opacity-0 invisible transition-all duration-300 z-50 shadow-lg">
+    <button id="back-to-top" class="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 w-12 h-12 btn-gradient rounded-full flex items-center justify-center text-white opacity-0 invisible transition-all duration-300 z-50 shadow-lg hover:scale-110">
         <i class="fas fa-arrow-up"></i>
     </button>
 
